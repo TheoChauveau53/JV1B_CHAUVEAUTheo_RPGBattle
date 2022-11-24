@@ -1,0 +1,1 @@
+var affichage_PV = document.getElementById("affichage_PM")
