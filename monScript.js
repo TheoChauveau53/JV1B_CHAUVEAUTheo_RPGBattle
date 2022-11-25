@@ -6,11 +6,15 @@ var pere_noel = document.getElementById("pere_noel");
 var PV_perenoel = 1100;
 var PM_perenoel = 1100;
 
-pere_noel.onmouseover = function() {
+pere_noel.onmouseenter = function(test) {
     affichage_PV.innerHTML = PV_perenoel + "PV"
     affichage_PM.innerHTML = PM_perenoel + "PM"
     prc_PV.value = 100
+    setTimeout(function(){
+        
+    },500)
 }
+
 
 
 
