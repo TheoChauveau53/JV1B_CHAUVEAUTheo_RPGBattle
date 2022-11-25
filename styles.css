@@ -38,3 +38,11 @@ body{
     display: flex;
     flex-direction: column;
 }
+#affichage_PV{
+    display: flex;
+    flex-direction: row ;
+}
+#affichage_PM{
+    display: flex;
+    flex-direction: row ;
+}
