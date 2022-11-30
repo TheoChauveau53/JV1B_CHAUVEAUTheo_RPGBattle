@@ -1,39 +1,46 @@
 // Stats Pere Noel
-var PVmax_perenoel = 1100;
-var PV_perenoel = 1100;
-var PMmax_perenoel = 1100
+const PVmax_perenoel = 700;
+var PV_perenoel = 700;
+const PMmax_perenoel = 1100;
 var PM_perenoel = 1100;
+var ATK_perenoel = 600;
 // Stats Mere Noel
-var PVmax_merenoel = 1100;
+const PVmax_merenoel = 1100;
 var PV_merenoel = 1100;
-var PMmax_merenoel = 1100
+const PMmax_merenoel = 1100;
 var PM_merenoel = 1100;
+var ATK_merenoel = 300;
 // Stats Lutin
-var PVmax_lutin = 1100;
+const PVmax_lutin = 1100;
 var PV_lutin = 1100;
-var PMmax_lutin = 1100
+const PMmax_lutin = 1100;
 var PM_lutin = 1100;
+var ATK_lutin = 300;
 // Stats Cerf
-var PVmax_cerf = 1100;
+const PVmax_cerf = 1100;
 var PV_cerf = 1100;
-var PMmax_cerf = 1100
+const PMmax_cerf = 1100;
 var PM_cerf = 1100;
+var ATK_cerf = 300;
 
 // Stats Pingouin
-var PVmax_pingouin = 1100;
+const PVmax_pingouin = 1100;
 var PV_pingouin = 1100;
-var PMmax_pingouin = 1100
+const PMmax_pingouin = 1100
 var PM_pingouin = 1100;
+var ATK_pingouin = 300;
 // Stats Pingouine
-var PVmax_pingouine = 1100;
+const PVmax_pingouine = 1100;
 var PV_pingouine = 1100;
-var PMmax_pingouine = 1100
+const PMmax_pingouine = 1100
 var PM_pingouine = 1100;
+var ATK_pingouine = 300;
 // Stats Orque
-var PVmax_orque = 1100;
+const PVmax_orque = 1100;
 var PV_orque = 1100;
-var PMmax_orque = 1100
+const PMmax_orque = 1100
 var PM_orque = 1100;
+var ATK_orque = 300;
 
 // Variables tour
 var Tour = 1
@@ -128,17 +135,16 @@ orque.onmouseleave = function(){
 // Tour par tour
 if (Tour==1){
     pere_noel.style.filter = "drop-shadow(0 1rem 3rem #0044ff)";
-    pere_noel.onmouseover=function(){
+    pere_noel.onmouseenter=function(){
         pere_noel.style.filter= "drop-shadow(0 1rem 3rem #ff0000)";
-}
-pere_noel.onmouseleave=function(){
-    if (Tour==1){
-    pere_noel.style.filter = "drop-shadow(0 1rem 3rem #0044ff)";
     }
-    else{
-        pere_noel.style.removeProperty("filter");
+    pere_noel.onmouseleave=function(){
+        "drop-shadow(0 1rem 3rem #0044ff)"
     }
-}
+
+
+        
+    pere_noel.style.removeProperty("filter");
 }
 
 
