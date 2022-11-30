@@ -121,3 +121,5 @@ orque.onmouseenter = function(){
 orque.onmouseleave = function(){
     affichage_stats.style.visibility = "hidden"
 }
+// Tour par tour
+
