@@ -37,21 +37,20 @@ var PM_orque = 1100;
 
 // Affichage des stats
 pere_noel.onmouseenter = function(){
-    affichage_stats.style.visibility = "visible"
+    affichage_stats.style.visibility = "visible";
     nombre_PV.innerHTML = PV_perenoel + "PV";
     nombre_PM.innerHTML = PM_perenoel + "PM";
     prc_PV.value = PV_perenoel;
     prc_PM.max = PVmax_perenoel;
     prc_PM.value = PM_perenoel;
     prc_PM.max = PMmax_perenoel;
-    pere_noel.style.filter = drop-shadow(green);
     //test.innerHTML = "60";
 }
 pere_noel.onmouseleave = function(){
-    affichage_stats.style.visibility = "hidden"
+    affichage_stats.style.visibility = "hidden";
 }
 mere_noel.onmouseenter = function(){
-    affichage_stats.style.visibility = "visible"
+    affichage_stats.style.visibility = "visible";
     nombre_PV.innerHTML = PV_merenoel + "PV";
     nombre_PM.innerHTML = PM_merenoel + "PM";
     prc_PV.value = PV_merenoel;
@@ -60,10 +59,10 @@ mere_noel.onmouseenter = function(){
     prc_PM.max = PMmax_merenoel;
 }
 mere_noel.onmouseleave = function(){
-    affichage_stats.style.visibility = "hidden"
+    affichage_stats.style.visibility = "hidden";
 }
 lutin.onmouseenter = function(){
-    affichage_stats.style.visibility = "visible"
+    affichage_stats.style.visibility = "visible";
     nombre_PV.innerHTML = PV_lutin + "PV";
     nombre_PM.innerHTML = PM_lutin + "PM";
     prc_PV.value = PV_lutin;
@@ -72,10 +71,10 @@ lutin.onmouseenter = function(){
     prc_PM.max = PMmax_lutin;
 }
 lutin.onmouseleave = function(){
-    affichage_stats.style.visibility = "hidden"
+    affichage_stats.style.visibility = "hidden";
 }
 cerf.onmouseenter = function(){
-    affichage_stats.style.visibility = "visible"
+    affichage_stats.style.visibility = "visible";
     nombre_PV.innerHTML = PV_cerf + "PV";
     nombre_PM.innerHTML = PM_cerf + "PM";
     prc_PV.value = PV_cerf;
@@ -84,10 +83,10 @@ cerf.onmouseenter = function(){
     prc_PM.max = PMmax_cerf;
 }
 cerf.onmouseleave = function(){
-    affichage_stats.style.visibility = "hidden"
+    affichage_stats.style.visibility = "hidden";
 }
 pingouin.onmouseenter = function(){
-    affichage_stats.style.visibility = "visible"
+    affichage_stats.style.visibility = "visible";
     nombre_PV.innerHTML = PV_pingouin + "PV";
     nombre_PM.innerHTML = PM_pingouin + "PM";
     prc_PV.value = PV_pingouin;
@@ -96,10 +95,10 @@ pingouin.onmouseenter = function(){
     prc_PM.max = PMmax_pingouin;
 }
 pingouin.onmouseleave = function(){
-    affichage_stats.style.visibility = "hidden"
+    affichage_stats.style.visibility = "hidden";
 }
 pingouine.onmouseenter = function(){
-    affichage_stats.style.visibility = "visible"
+    affichage_stats.style.visibility = "visible";
     nombre_PV.innerHTML = PV_pingouine + "PV";
     nombre_PM.innerHTML = PM_pingouine + "PM";
     prc_PV.value = PV_pingouine;
@@ -108,10 +107,10 @@ pingouine.onmouseenter = function(){
     prc_PM.max = PMmax_pingouine;
 }
 pingouine.onmouseleave = function(){
-    affichage_stats.style.visibility = "hidden"
+    affichage_stats.style.visibility = "hidden";
 }
 orque.onmouseenter = function(){
-    affichage_stats.style.visibility = "visible"
+    affichage_stats.style.visibility = "visible";
     nombre_PV.innerHTML = PV_orque + "PV";
     nombre_PM.innerHTML = PM_orque + "PM";
     prc_PV.value = PV_orque;
@@ -120,7 +119,8 @@ orque.onmouseenter = function(){
     prc_PM.max = PMmax_orque;
 }
 orque.onmouseleave = function(){
-    affichage_stats.style.visibility = "hidden"
+    affichage_stats.style.visibility = "hidden";
 }
+
 // Tour par tour
-pere_noel.style.filter = drop-shadow(green)
+pere_noel.style.filter = "drop-shadow(0 1rem 3rem #ff0000)";
