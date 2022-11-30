@@ -44,7 +44,8 @@ pere_noel.onmouseenter = function(){
     prc_PM.max = PVmax_perenoel;
     prc_PM.value = PM_perenoel;
     prc_PM.max = PMmax_perenoel;
-    //test.innerHTML = "60"
+    pere_noel.style.filter = drop-shadow(green);
+    //test.innerHTML = "60";
 }
 pere_noel.onmouseleave = function(){
     affichage_stats.style.visibility = "hidden"
@@ -122,4 +123,4 @@ orque.onmouseleave = function(){
     affichage_stats.style.visibility = "hidden"
 }
 // Tour par tour
-
+pere_noel.style.filter = drop-shadow(green)
