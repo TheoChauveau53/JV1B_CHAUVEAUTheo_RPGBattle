@@ -1,11 +1,7 @@
 html{
-    display: flex;
     width: 100%;
     height: 100%;
-    
 }
-
-
 body{
     margin: 0;
     width: 100%;
@@ -13,12 +9,21 @@ body{
     background-image: url("images/fond.gif");
     background-size: cover;
 }
-
+button{
+    all: unset;
+    border : solid 0.5vh;
+}
+button:hover{
+    inset: ;
+}
 .persos{
     width: 20%;
     height: 400px ;
 }
+.persos:hover{
+    filter: drop-shadow(0 1rem 3rem #ff0000);
 
+}
 
 
 #interface{
@@ -29,12 +34,13 @@ body{
     bottom: 0;
 }
 #dialogue{
-    width: 300px ;
+    width: 30vw ;
     height: auto;
     background-color: darkgrey;
     
 }
 #boutons{
+    width: 30vw ;
     display: flex;
     flex-direction: column;
 }
