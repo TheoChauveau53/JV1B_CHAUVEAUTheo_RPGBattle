@@ -18,6 +18,7 @@ button:hover{
 
 .persos{
     height: 20vh;
+
 }
 .persos:hover{
     filter: drop-shadow(0 1rem 3rem #ff0000);

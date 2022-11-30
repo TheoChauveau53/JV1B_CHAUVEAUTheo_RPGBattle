@@ -35,6 +35,9 @@ var PV_orque = 1100;
 var PMmax_orque = 1100
 var PM_orque = 1100;
 
+// Variables tour
+var Tour = 1
+
 // Affichage des stats
 pere_noel.onmouseenter = function(){
     affichage_stats.style.visibility = "visible";
@@ -123,4 +126,20 @@ orque.onmouseleave = function(){
 }
 
 // Tour par tour
-pere_noel.style.filter = "drop-shadow(0 1rem 3rem #ff0000)";
+if (Tour==1){
+    pere_noel.style.filter = "drop-shadow(0 1rem 3rem #0044ff)";
+    pere_noel.onmouseover=function(){
+        pere_noel.style.filter= "drop-shadow(0 1rem 3rem #ff0000)";
+}
+pere_noel.onmouseleave=function(){
+    if (Tour==1){
+    pere_noel.style.filter = "drop-shadow(0 1rem 3rem #0044ff)";
+    }
+    else{
+        pere_noel.style.removeProperty("filter");
+    }
+}
+}
+
+
+
