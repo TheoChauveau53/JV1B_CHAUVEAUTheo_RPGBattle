@@ -1,7 +1,7 @@
 // Stats Pere Noel
 const PVmax_perenoel = 700;
 var PV_perenoel = 700;
-const PMmax_perenoel = 700;
+const PMmax_perenoel = 1100;
 var PM_perenoel = 1100;
 var ATK_perenoel = 600;
 // Stats Mere Noel
@@ -141,7 +141,7 @@ if (Tour==1){
         nombre_PV.innerHTML = PV_perenoel + "PV";
         nombre_PM.innerHTML = PM_perenoel + "PM";
         prc_PV.value = PV_perenoel;
-        prc_PM.max = PVmax_perenoel;
+        prc_PV.max = PVmax_perenoel;
         prc_PM.value = PM_perenoel;
         prc_PM.max = PMmax_perenoel;
     }
@@ -152,7 +152,11 @@ if (Tour==1){
     attack.onclick=function(){
         pingouin.onclick=function(){
             PV_pingouin = PV_pingouin-ATK_perenoel;
-            dialogue.innerHTML = " Vous avez infligé " + ATK_perenoel + "dégats au pingouin"
+            dialogue.innerHTML = " Vous avez infligé " + ATK_perenoel + "dégats au pingouin";
+            nombre_PV.innerHTML = PV_pingouin + "PV";
+            prc_PV.value = PV_pingouin;
+            pere_noel.style.removeProperty("filter");
+            Tour = 2
         }
     }
 }

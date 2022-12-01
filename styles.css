@@ -25,7 +25,7 @@ button:hover{
 }
 
 #scene{
-    background-image: url("images/fond.gif");
+    
     background-size: cover;
     height: 90vh;
     display: flex;
