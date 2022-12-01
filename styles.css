@@ -70,4 +70,5 @@ button:hover{
     display: flex;
     flex-direction: column ;
     width:33vw;
+    visibility: hidden;
 }

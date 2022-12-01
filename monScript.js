@@ -137,15 +137,21 @@ if (Tour==1){
     pere_noel.style.filter = "drop-shadow(0 1rem 3rem #0044ff)";
     pere_noel.onmouseenter=function(){
         pere_noel.style.filter= "drop-shadow(0 1rem 3rem #ff0000)";
+        affichage_stats.style.visibility = "visible";
+        nombre_PV.innerHTML = PV_perenoel + "PV";
+        nombre_PM.innerHTML = PM_perenoel + "PM";
+        prc_PV.value = PV_perenoel;
+        prc_PM.max = PVmax_perenoel;
+        prc_PM.value = PM_perenoel;
+        prc_PM.max = PMmax_perenoel;
     }
     pere_noel.onmouseleave=function(){
-        "drop-shadow(0 1rem 3rem #0044ff)"
-    }
-
-
-        
-    pere_noel.style.removeProperty("filter");
+        pere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+        affichage_stats.style.visibility = "hidden";
+    }  
 }
 
 
-
+if (Tour==2){
+    pere_noel.style.removeProperty("filter");
+}
