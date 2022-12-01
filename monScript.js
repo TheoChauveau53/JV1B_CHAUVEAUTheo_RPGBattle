@@ -1,7 +1,7 @@
 // Stats Pere Noel
 const PVmax_perenoel = 700;
 var PV_perenoel = 700;
-const PMmax_perenoel = 1100;
+const PMmax_perenoel = 700;
 var PM_perenoel = 1100;
 var ATK_perenoel = 600;
 // Stats Mere Noel
@@ -51,7 +51,7 @@ pere_noel.onmouseenter = function(){
     nombre_PV.innerHTML = PV_perenoel + "PV";
     nombre_PM.innerHTML = PM_perenoel + "PM";
     prc_PV.value = PV_perenoel;
-    prc_PM.max = PVmax_perenoel;
+    prc_PV.max = PVmax_perenoel;
     prc_PM.value = PM_perenoel;
     prc_PM.max = PMmax_perenoel;
     //test.innerHTML = "60";
@@ -64,7 +64,7 @@ mere_noel.onmouseenter = function(){
     nombre_PV.innerHTML = PV_merenoel + "PV";
     nombre_PM.innerHTML = PM_merenoel + "PM";
     prc_PV.value = PV_merenoel;
-    prc_PM.max = PVmax_merenoel;
+    prc_PV.max = PVmax_merenoel;
     prc_PM.value = PM_merenoel;
     prc_PM.max = PMmax_merenoel;
 }
@@ -76,7 +76,7 @@ lutin.onmouseenter = function(){
     nombre_PV.innerHTML = PV_lutin + "PV";
     nombre_PM.innerHTML = PM_lutin + "PM";
     prc_PV.value = PV_lutin;
-    prc_PM.max = PVmax_lutin;
+    prc_PV.max = PVmax_lutin;
     prc_PM.value = PM_lutin;
     prc_PM.max = PMmax_lutin;
 }
@@ -88,19 +88,19 @@ cerf.onmouseenter = function(){
     nombre_PV.innerHTML = PV_cerf + "PV";
     nombre_PM.innerHTML = PM_cerf + "PM";
     prc_PV.value = PV_cerf;
-    prc_PM.max = PVmax_cerf;
+    prc_PV.max = PVmax_cerf;
     prc_PM.value = PM_cerf;
     prc_PM.max = PMmax_cerf;
 }
 cerf.onmouseleave = function(){
     affichage_stats.style.visibility = "hidden";
 }
-pingouin.onmouseenter = function(){
+pingouin.onmouseenter = function Print_pingouin(){
     affichage_stats.style.visibility = "visible";
     nombre_PV.innerHTML = PV_pingouin + "PV";
     nombre_PM.innerHTML = PM_pingouin + "PM";
     prc_PV.value = PV_pingouin;
-    prc_PM.max = PVmax_pingouin;
+    prc_PV.max = PVmax_pingouin;
     prc_PM.value = PM_pingouin;
     prc_PM.max = PMmax_pingouin;
 }
@@ -112,7 +112,7 @@ pingouine.onmouseenter = function(){
     nombre_PV.innerHTML = PV_pingouine + "PV";
     nombre_PM.innerHTML = PM_pingouine + "PM";
     prc_PV.value = PV_pingouine;
-    prc_PM.max = PVmax_pingouine;
+    prc_PV.max = PVmax_pingouine;
     prc_PM.value = PM_pingouine;
     prc_PM.max = PMmax_pingouine;
 }
@@ -124,7 +124,7 @@ orque.onmouseenter = function(){
     nombre_PV.innerHTML = PV_orque + "PV";
     nombre_PM.innerHTML = PM_orque + "PM";
     prc_PV.value = PV_orque;
-    prc_PM.max = PVmax_orque;
+    prc_PV.max = PVmax_orque;
     prc_PM.value = PM_orque;
     prc_PM.max = PMmax_orque;
 }
@@ -149,6 +149,12 @@ if (Tour==1){
         pere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
         affichage_stats.style.visibility = "hidden";
     }  
+    attack.onclick=function(){
+        pingouin.onclick=function(){
+            PV_pingouin = PV_pingouin-ATK_perenoel;
+            dialogue.innerHTML = " Vous avez infligé " + ATK_perenoel + "dégats au pingouin"
+        }
+    }
 }
 
 
