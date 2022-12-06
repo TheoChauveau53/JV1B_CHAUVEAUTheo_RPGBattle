@@ -115,26 +115,25 @@ orque.onmouseleave = function(){
 }
 var victoire=false
 
-//function Degats(stats_att,stats_cible){
-//    stats_cible.PV = stats_cible.PV - stats_att.ATK
-//    dialogue.innerHTML = " Vous avez infligé " + stats_att.ATK + "dégats au pingouin";
-//    nombre_PV.innerHTML = stats_cible.PV + "PV";
-//    prc_PV.value = stats_cible.PV;
-//    tour = tour+1;
-//}
-//
-//function Tour(){
-//    if(tour==1){
-//        attack.onclick= function(){
-//            pingouin.onclick(){
-//                Degats(stats_perenoel,stats_pingouin)
-//            }
-//        }   
-//    }
-//}
+function Degats(stats_att,stats_cible){
+    stats_cible.PV = stats_cible.PV - stats_att.ATK
+    dialogue.innerHTML = " Vous avez infligé " + stats_att.ATK + "dégats au pingouin";
+    nombre_PV.innerHTML = stats_cible.PV + "PV";
+    prc_PV.value = stats_cible.PV;
+    tour = tour+1;
+}
 
+function Tour(){
+    if(tour==1){
+        attack.onclick= function(){
+            pingouin.onclick= function(){
+                Degats(stats_perenoel,stats_pingouin)
+            }
+        }   
+    }
+}
 
-
+Tour()
 // tour par tour
 //while(victoire==false)
 
