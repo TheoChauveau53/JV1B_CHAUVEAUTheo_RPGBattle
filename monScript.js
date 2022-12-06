@@ -1,3 +1,4 @@
+// Stats persos
 var stats_perenoel = {
     PVmax : 700,
     PV : 700,
@@ -47,10 +48,11 @@ var stats_orque = {
     PM : 1100,
     ATK : 300,
 }
-
-// Variables tour
-var tour = 1
-
+//Variable tour
+var tour=1
+var attaque=false
+var defense=false
+var special=false
 // Affichage des stats
 function Affich_stats(perso,stats_perso){
     perso.style.filter ="drop-shadow(0 1rem 3rem #ff0000)";
@@ -113,7 +115,6 @@ orque.onmouseenter = function(){
 orque.onmouseleave = function(){
     Masque_stats(7,orque)
 }
-var victoire=false
 
 function Degats(stats_att,stats_cible){
     stats_cible.PV = stats_cible.PV - stats_att.ATK
@@ -121,19 +122,59 @@ function Degats(stats_att,stats_cible){
     nombre_PV.innerHTML = stats_cible.PV + "PV";
     prc_PV.value = stats_cible.PV;
     tour = tour+1;
+    attaque = false
 }
+pere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
 
-function Tour(){
-    if(tour==1){
-        attack.onclick= function(){
-            pingouin.onclick= function(){
-                Degats(stats_perenoel,stats_pingouin)
-            }
-        }   
+attack.onclick= function(){
+    if (tour==1 || tour==2 || tour==3 || tour==4){
+        attaque=true
+        defense=false
+        special=false
+    }
+    if(attaque==true){
+        attaque=false
     }
 }
+pingouin.onclick= function(){
+    if(attaque==true){
+        if(tour==1){
+            Degats(stats_perenoel,stats_pingouin)
+        }
+        if(tour==2){
+            Degats(stats_merenoel,stats_pingouin)
+        }
+        if(tour==3){
+            Degats(stats_lutin,stats_pingouin)
+        }
+        if(tour==4){
+            Degats(stats_cerf,stats_pingouin)
+        }
+        if (stats_pingouin.PV <=0){
+            document.getElementById('pingouin').display = 'none';
+        }
+    } 
+    
+}
+pingouine.onclick= function(){
+    if(attaque==true){
+        if(tour==1){
+            Degats(stats_perenoel,stats_pingouine)
+        }
+        if(tour==2){
+            Degats(stats_merenoel,stats_pingouine)
+        }
+        if (stats_pingouin.PV <=0){
+            document.getElementById('pingouine').display = 'none';
+        }
+    } 
+}
 
-Tour()
+
+
+
+
+
 // tour par tour
 //while(victoire==false)
 
