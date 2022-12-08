@@ -140,24 +140,44 @@ attack.onclick= function(){
         attaque=false
     }
 }
-screen.onclick = function(){
-    if (tour==5){
 
-    }
-}
-pingouin.onclick= function(){
+pingouin.onclick= function Pingouin(){
     if(attaque==true){
         if(tour==1){
-            Degats(stats_perenoel,stats_pingouin);
+            if(stats_perenoel.PV>0){
+                Degats(stats_perenoel,stats_pingouin);
+            }
+            else{
+                tour=tour+1
+                Pingouin()
+            }
         }
         else if(tour==2){
-            Degats(stats_merenoel,stats_pingouin);
+            if(stats_merenoel.PV>0){
+                Degats(stats_merenoel,stats_pingouin);
+            }  
+            else{
+                tour = tour+1
+                Pingouin()
+            }
         }
         else if(tour==3){
-            Degats(stats_lutin,stats_pingouin);
+            if(stats_lutin.PV>0){
+                Degats(stats_lutin,stats_pingouin);
+            }
+            else{
+                tour= tour+1
+                Pingouin()
+            }
         }
         else if(tour==4){
-            Degats(stats_cerf,stats_pingouin);
+            if(stats_cerf.PV>0){
+                Degats(stats_cerf,stats_pingouin);
+            }
+            else{
+                tour= tour+1
+                Pingouin()
+            }
         }
         if (stats_pingouin.PV <=0){
             pingouin.style.display = "none";
@@ -166,19 +186,43 @@ pingouin.onclick= function(){
     } 
 }
 
-pingouine.onclick= function(){
+pingouine.onclick= function Pingouine(){
     if(attaque==true){
         if(tour==1){
-            Degats(stats_perenoel,stats_pingouine);
+            if(stats_perenoel.PV>0){
+                Degats(stats_perenoel,stats_pingouine);
+            }
+            else{
+                tour=tour+1
+                Pingouine()
+            }
         }
         else if(tour==2){
-            Degats(stats_merenoel,stats_pingouine);
+            if(stats_merenoel.PV>0){
+                Degats(stats_merenoel,stats_pingouine);
+            }  
+            else{
+                tour = tour+1
+                Pingouine()
+            }
         }
         else if(tour==3){
-            Degats(stats_lutin,stats_pingouine);
+            if(stats_lutin.PV>0){
+                Degats(stats_lutin,stats_pingouine);
+            }
+            else{
+                tour= tour+1
+                Pingouine()
+            }
         }
         else if(tour==4){
-            Degats(stats_cerf,stats_pingouine);
+            if(stats_cerf.PV>0){
+                Degats(stats_cerf,stats_pingouine);
+            }
+            else{
+                tour= tour+1
+                Pingouine()
+            }
         }
         if (stats_pingouine.PV <=0){
             pingouine.style.display = 'none';
@@ -186,7 +230,7 @@ pingouine.onclick= function(){
         }
     } 
 }
-orque.onclick= function(){
+orque.onclick= function Orque(){
     if(attaque==true){
         if(tour==1){
             if(stats_perenoel.PV>0){
@@ -194,6 +238,7 @@ orque.onclick= function(){
             }
             else{
                 tour=tour+1
+                Orque()
             }
         }
         else if(tour==2){
@@ -202,13 +247,26 @@ orque.onclick= function(){
             }  
             else{
                 tour = tour+1
+                Orque()
             }
         }
         else if(tour==3){
-            Degats(stats_lutin,stats_orque);
+            if(stats_lutin.PV>0){
+                Degats(stats_lutin,stats_orque);
+            }
+            else{
+                tour= tour+1
+                Orque()
+            }
         }
         else if(tour==4){
-            Degats(stats_cerf,stats_orque);
+            if(stats_cerf.PV>0){
+                Degats(stats_cerf,stats_orque);
+            }
+            else{
+                tour= tour+1
+                Orque()
+            }
         }
         if (stats_orque.PV <=0){
             orque.style.display = 'none';
