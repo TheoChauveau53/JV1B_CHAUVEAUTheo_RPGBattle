@@ -122,8 +122,10 @@ function Degats(stats_att,stats_cible){
     nombre_PV.innerHTML = stats_cible.PV + "PV";
     prc_PV.value = stats_cible.PV;
     tour = tour+1;
+    if(tour==8){
+        tour=1
+    }
     attaque = false;
-    console.log(2)
 }
 pere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
 
@@ -192,5 +194,5 @@ orque.onclick= function(){
         if (stats_pingouin.PV <=0){
             orque.style.display = 'none';
         }
-    } 
+    }
 }
