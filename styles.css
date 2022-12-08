@@ -18,11 +18,8 @@ button:hover{
 
 .persos{
     height: 20vh;
+}
 
-}
-.persos:hover{
-    filter: drop-shadow(0 1rem 3rem #ff0000);
-}
 
 #scene{
     background-image: url("images/fond.gif");
@@ -40,7 +37,9 @@ button:hover{
     background-color:grey;
     justify-content: space-around;
 }
+
 #dialogue{
+    font-size: 3vh;
     width: 33vw ;
     height: auto;
     background-color: darkgrey;   

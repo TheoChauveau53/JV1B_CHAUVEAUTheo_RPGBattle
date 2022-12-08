@@ -48,6 +48,7 @@ var stats_orque = {
     PM : 1100,
     ATK : 300,
 }
+var timing={delay:1000}
 //Variable tour
 var tour=1
 var attaque=false
@@ -282,15 +283,80 @@ orque.onclick= function Orque(){
         else if(tour==4){
             if(stats_cerf.PV>0){
                 Degats(stats_cerf,stats_orque);
+                Riposte()
             }
             else{
                 tour= tour+1
                 Orque()
+                Riposte()
             }
         }
         if (stats_orque.PV <=0){
             orque.style.display = 'none';
             dialogue.innerHTML = " L'orque est morte";
+        }
+    }
+}
+
+function Riposte(){
+    random = Math.floor(Math.random() * 4)+1;
+    console.log(random)
+    if(tour==5){
+        if(stats_pingouin.PV>0){
+            if (random==1){
+                Degats(stats_pingouin,stats_perenoel)
+            }
+            if (random==2){
+                Degats(stats_pingouin,stats_merenoel)
+            }
+            if (random==3){
+                Degats(stats_pingouin,stats_lutin)
+            }
+            if (random==4){
+                Degats(stats_pingouin,stats_cerf)
+            }
+        }
+        else{
+            tour=tour+1
+        }
+    }
+    timing
+    if (tour==6){
+        if(stats_pingouine.PV>0){
+            if (random==1){
+                Degats(stats_pingouine,stats_perenoel)
+            }
+            if (random==2){
+                Degats(stats_pingouine,stats_merenoel)
+            }
+            if (random==3){
+                Degats(stats_pingouine,stats_lutin)
+            }
+            if (random==4){
+                Degats(stats_pingouine,stats_cerf)
+            }
+        }
+        else{
+            tour=tour+1
+        }
+    }
+    if (tour==7){
+        if(stats_orque.PV>0){
+            if (random==1){
+                Degats(stats_orque,stats_perenoel)
+            }
+            if (random==2){
+                Degats(stats_orque,stats_merenoel)
+            }
+            if (random==3){
+                Degats(stats_orque,stats_lutin)
+            }
+            if (random==4){
+                Degats(stats_orque,stats_cerf)
+            }
+        }
+        else{
+            tour=tour+1
         }
     }
 }
