@@ -118,7 +118,7 @@ orque.onmouseleave = function(){
 
 function Degats(stats_att,stats_cible){
     stats_cible.PV = stats_cible.PV - stats_att.ATK
-    dialogue.innerHTML = " Vous avez infligé " + stats_att.ATK + "dégats au pingouin";
+    dialogue.innerHTML = " Vous avez infligé " + stats_att.ATK + " dégats au pingouin";
     nombre_PV.innerHTML = stats_cible.PV + "PV";
     prc_PV.value = stats_cible.PV;
     tour = tour+1;
@@ -132,7 +132,7 @@ attack.onclick= function(){
         defense=false
         special=false
     }
-    if(attaque==true){
+    else if(attaque==true){
         attaque=false
     }
 }
@@ -169,23 +169,3 @@ pingouine.onclick= function(){
         }
     } 
 }
-
-
-
-
-
-
-// tour par tour
-//while(victoire==false)
-
-    
-//
-//attack.onclick=function(){
-//    pingouin.onclick=function(){           
-//        PV_pingouin = PV_pingouin-ATK_perenoel;
-//        dialogue.innerHTML = " Vous avez infligé " + ATK_perenoel + "dégats au pingouin";
-//        nombre_PV.innerHTML = PV_pingouin + "PV";
-//        prc_PV.value = PV_pingouin;
-//        tour = 2;  
-//    }  
-//}
