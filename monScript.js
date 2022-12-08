@@ -117,7 +117,7 @@ orque.onmouseleave = function(){
 }
 
 function Degats(stats_att,stats_cible){
-    stats_cible.PV = parseInt(stats_cible.PV) - stats_att.ATK;
+    stats_cible.PV = stats_cible.PV - stats_att.ATK;
     dialogue.innerHTML = " Vous avez infligé " + stats_att.ATK + " dégats au pingouin";
     nombre_PV.innerHTML = stats_cible.PV + "PV";
     prc_PV.value = stats_cible.PV;
@@ -127,6 +127,7 @@ function Degats(stats_att,stats_cible){
     }
     attaque = false;
 }
+
 pere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
 
 attack.onclick= function(){
@@ -137,6 +138,11 @@ attack.onclick= function(){
     }
     else if(attaque==true){
         attaque=false
+    }
+}
+screen.onclick = function(){
+    if (tour==5){
+
     }
 }
 pingouin.onclick= function(){
@@ -155,9 +161,11 @@ pingouin.onclick= function(){
         }
         if (stats_pingouin.PV <=0){
             pingouin.style.display = "none";
+            dialogue.innerHTML = " Le pingouin est mort"
         }
     } 
 }
+
 pingouine.onclick= function(){
     if(attaque==true){
         if(tour==1){
@@ -172,18 +180,29 @@ pingouine.onclick= function(){
         else if(tour==4){
             Degats(stats_cerf,stats_pingouine);
         }
-        if (stats_pingouin.PV <=0){
+        if (stats_pingouine.PV <=0){
             pingouine.style.display = 'none';
+            dialogue.innerHTML = " La pingouine est morte";
         }
     } 
 }
 orque.onclick= function(){
     if(attaque==true){
         if(tour==1){
-            Degats(stats_perenoel,stats_orque);
+            if(stats_perenoel.PV>0){
+                Degats(stats_perenoel,stats_orque);
+            }
+            else{
+                tour=tour+1
+            }
         }
         else if(tour==2){
-            Degats(stats_merenoel,stats_orque);
+            if(stats_merenoel.PV>0){
+                Degats(stats_merenoel,stats_orque);
+            }  
+            else{
+                tour = tour+1
+            }
         }
         else if(tour==3){
             Degats(stats_lutin,stats_orque);
@@ -191,8 +210,9 @@ orque.onclick= function(){
         else if(tour==4){
             Degats(stats_cerf,stats_orque);
         }
-        if (stats_pingouin.PV <=0){
+        if (stats_orque.PV <=0){
             orque.style.display = 'none';
+            dialogue.innerHTML = " L'orque est morte";
         }
     }
 }
