@@ -117,12 +117,13 @@ orque.onmouseleave = function(){
 }
 
 function Degats(stats_att,stats_cible){
-    stats_cible.PV = stats_cible.PV - stats_att.ATK
+    stats_cible.PV = parseInt(stats_cible.PV) - stats_att.ATK;
     dialogue.innerHTML = " Vous avez infligé " + stats_att.ATK + " dégats au pingouin";
     nombre_PV.innerHTML = stats_cible.PV + "PV";
     prc_PV.value = stats_cible.PV;
     tour = tour+1;
-    attaque = false
+    attaque = false;
+    console.log(2)
 }
 pere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
 
@@ -139,33 +140,57 @@ attack.onclick= function(){
 pingouin.onclick= function(){
     if(attaque==true){
         if(tour==1){
-            Degats(stats_perenoel,stats_pingouin)
+            Degats(stats_perenoel,stats_pingouin);
         }
-        if(tour==2){
-            Degats(stats_merenoel,stats_pingouin)
+        else if(tour==2){
+            Degats(stats_merenoel,stats_pingouin);
         }
-        if(tour==3){
-            Degats(stats_lutin,stats_pingouin)
+        else if(tour==3){
+            Degats(stats_lutin,stats_pingouin);
         }
-        if(tour==4){
-            Degats(stats_cerf,stats_pingouin)
+        else if(tour==4){
+            Degats(stats_cerf,stats_pingouin);
         }
         if (stats_pingouin.PV <=0){
-            document.getElementById('pingouin').display = 'none';
+            pingouin.style.display = "none";
         }
     } 
-    
 }
 pingouine.onclick= function(){
     if(attaque==true){
         if(tour==1){
-            Degats(stats_perenoel,stats_pingouine)
+            Degats(stats_perenoel,stats_pingouine);
         }
-        if(tour==2){
-            Degats(stats_merenoel,stats_pingouine)
+        else if(tour==2){
+            Degats(stats_merenoel,stats_pingouine);
+        }
+        else if(tour==3){
+            Degats(stats_lutin,stats_pingouine);
+        }
+        else if(tour==4){
+            Degats(stats_cerf,stats_pingouine);
         }
         if (stats_pingouin.PV <=0){
-            document.getElementById('pingouine').display = 'none';
+            pingouine.style.display = 'none';
+        }
+    } 
+}
+orque.onclick= function(){
+    if(attaque==true){
+        if(tour==1){
+            Degats(stats_perenoel,stats_orque);
+        }
+        else if(tour==2){
+            Degats(stats_merenoel,stats_orque);
+        }
+        else if(tour==3){
+            Degats(stats_lutin,stats_orque);
+        }
+        else if(tour==4){
+            Degats(stats_cerf,stats_orque);
+        }
+        if (stats_pingouin.PV <=0){
+            orque.style.display = 'none';
         }
     } 
 }
