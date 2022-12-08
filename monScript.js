@@ -131,13 +131,33 @@ function Degats(stats_att,stats_cible){
 pere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
 
 attack.onclick= function(){
-    if (tour==1 || tour==2 || tour==3 || tour==4){
-        attaque=true
-        defense=false
-        special=false
+    if(attaque==true){
+        attaque=false;
     }
-    else if(attaque==true){
-        attaque=false
+    else{
+        attaque=true;
+        defense=false;
+        special=false;
+    }
+}
+defens.onclick= function(){
+    if(defense==true){
+        defense=false;
+    }
+    else{
+        attaque=false;
+        defense=true;
+        special=false;
+    }
+}
+spece.onclick= function(){
+    if(special==true){
+        special=false;
+    }
+    else{
+        attaque=false;
+        defense=false;
+        special=true;
     }
 }
 
