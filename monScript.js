@@ -422,8 +422,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
             if(stats_perenoel.PV>0){
                 if (stats_perenoel.LAST!="Special"){
                     stats_pingouin.Poison=true
-                    stats_pingouin.Tourpoison=5
-                    Disable();
+                    stats_pingouin.Tourpoison=5                    
                     pere_noel.style.filter ="none";
                     pere_noel.src="images/pere_noel.png"
                     mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
@@ -433,6 +432,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                     spece.style.backgroundColor="grey";
                     defens.style.backgroundColor="grey";
                     attack.style.backgroundColor="grey"; 
+                    Disable();
                     stats_perenoel.LAST = "Special"
                     stats_perenoel.DEF = 0;
                     stats_perenoel.PM -= 50
@@ -632,7 +632,6 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 if (stats_perenoel.LAST!="Special"){
                     stats_pingouine.Poison=true
                     stats_pingouine.Tourpoison=5
-                    Disable();
                     pere_noel.style.filter ="none";
                     pere_noel.src="images/pere_noel.png"
                     mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
@@ -642,6 +641,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                     spece.style.backgroundColor="grey";
                     defens.style.backgroundColor="grey";
                     attack.style.backgroundColor="grey"; 
+                    Disable();
                     stats_perenoel.LAST = "Special"
                     stats_perenoel.DEF = 0;
                     stats_perenoel.PM -= 50
@@ -840,8 +840,7 @@ orque.onclick= function Orque(){                                // Interaction a
             if(stats_perenoel.PV>0){
                 if (stats_perenoel.LAST!="Special"){
                     stats_orque.Poison=true
-                    stats_orque.Tourpoison=5
-                    Disable();
+                    stats_orque.Tourpoison=5                   
                     pere_noel.style.filter ="none";
                     pere_noel.src="images/pere_noel.png"
                     mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
@@ -851,6 +850,7 @@ orque.onclick= function Orque(){                                // Interaction a
                     spece.style.backgroundColor="grey";
                     defens.style.backgroundColor="grey";
                     attack.style.backgroundColor="grey"; 
+                    Disable();
                     stats_perenoel.LAST = "Special"
                     stats_perenoel.DEF = 0;
                     stats_perenoel.PM -= 50
