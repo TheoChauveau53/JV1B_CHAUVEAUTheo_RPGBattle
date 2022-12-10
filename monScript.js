@@ -1,6 +1,6 @@
 // Stats persos
 var stats_perenoel = {
-    NOM : "pere Noel",
+    NOM : "Pere Noel",
     PVmax : 150,    //PV max
     PV : 150,       //PV actuel
     PMmax : 100,   //PM max
@@ -11,7 +11,7 @@ var stats_perenoel = {
     LAST : "",       // Derniere action effectué
 }
 var stats_merenoel = {
-    NOM : "mere Noel",
+    NOM : "Mere Noel",
     PVmax : 100,
     PV : 100,
     PMmax : 100,
@@ -22,7 +22,7 @@ var stats_merenoel = {
     LAST : "", 
 }
 var stats_lutin = {
-    NOM : "lutin",
+    NOM : "Lutin",
     PVmax : 50,
     PV : 50,
     PMmax : 100,
@@ -33,7 +33,7 @@ var stats_lutin = {
     LAST : "", 
 }
 var stats_cerf = {
-    NOM : "cerf",
+    NOM : "Cerf",
     PVmax : 100,
     PV : 100,
     PMmax : 100,
@@ -44,7 +44,7 @@ var stats_cerf = {
     LAST : "", 
 }
 var stats_pingouin = {
-    NOM : "pingouin",
+    NOM : "Pingouin",
     PVmax : 100,
     PV : 100,
     PMmax : 100,
@@ -57,7 +57,7 @@ var stats_pingouin = {
     Tourpoison : 0,
 }
 var stats_pingouine = {
-    NOM : "pingouine",
+    NOM : "Pingouine",
     PVmax : 100,
     PV : 100,
     PMmax : 100,
@@ -70,7 +70,7 @@ var stats_pingouine = {
     Tourpoison : 0,
 }
 var stats_orque = {
-    NOM : "orque",
+    NOM : "Orque",
     PVmax : 100,
     PV : 100,
     PMmax : 100,
@@ -138,6 +138,7 @@ function Disable(){                                 // Affichage en noir des bou
 function Affich_stats(perso,stats_perso){
     perso.style.filter ="drop-shadow(0 1rem 3rem #ff0000)";
     affichage_stats.style.visibility = "visible";
+    affichage_nom.innerHTML = stats_perso.NOM;
     nombre_PV.innerHTML = stats_perso.PV + "PV";
     nombre_PM.innerHTML = stats_perso.PM + "PM";
     prc_PV.value = stats_perso.PV;
