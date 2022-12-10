@@ -6,7 +6,7 @@ var stats_perenoel = {
     PMmax : 100,   //PM max
     PM : 100,      //PM actuel
     ATK : 600,      //Degats d'attaque
-    ATKSPE : 900,   //Degats d'attaque special
+    ATKSPE : 5,   //Degats d'attaque special
     DEF : 0,        // Réduction des dégats avec défense
     LAST : "",       // Derniere action effectué
 }
@@ -52,7 +52,9 @@ var stats_pingouin = {
     ATK : 300,
     ATKSPE : 600,
     DEF : 0,
-    LAST : "", 
+    LAST : "",
+    Poison : false,
+    Tourpoison : 0,
 }
 var stats_pingouine = {
     NOM : "pingouine",
@@ -64,6 +66,8 @@ var stats_pingouine = {
     ATKSPE : 600,
     DEF : 0,
     LAST : "", 
+    Poison : false,
+    Tourpoison : 0,
 }
 var stats_orque = {
     NOM : "orque",
@@ -75,6 +79,8 @@ var stats_orque = {
     ATKSPE : 600,
     DEF : 0,
     LAST : "", 
+    Poison : false,
+    Tourpoison : 0,
 }
 //Variable tour
 var tour=1
@@ -206,6 +212,7 @@ function Degats(stats_att,stats_cible){
     spece.style.backgroundColor="grey";
     defens.style.backgroundColor="grey";
     stats_att.LAST = "Attaque"
+    stats_att.DEF = 0
     Fin();                                          // vérification condition victoire
 }
 
@@ -224,6 +231,7 @@ function Degats_speciaux(stats_att,stats_cible){
     defens.style.backgroundColor="grey";
     attack.style.backgroundColor="grey"; 
     stats_att.LAST = "Special"
+    stats_att.DEF = 0
     Fin();
 }
 
@@ -400,10 +408,21 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
         if(tour==1){
             if(stats_perenoel.PV>0){
                 if (stats_perenoel.LAST!="Special"){
-                    Degats_speciaux(stats_perenoel,stats_pingouin);
+                    stats_pingouin.Poison=true
+                    stats_pingouin.Tourpoison=5
                     Disable();
                     pere_noel.style.filter ="none";
                     mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    dialogue.innerHTML = "Pere noel a empoisonné le pingouin pendant 5 tours"+"<br/>"+dialogue.innerHTML;
+                    special=false;
+                    spece.style.backgroundColor="grey";
+                    defens.style.backgroundColor="grey";
+                    attack.style.backgroundColor="grey"; 
+                    stats_perenoel.LAST = "Special"
+                    stats_perenoel.DEF = 0;
+                    stats_perenoel.PM -= 50
+                    tour+=1
+                    Fin();
                 }
                 else if (stats_perenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -578,10 +597,21 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
         if(tour==1){
             if(stats_perenoel.PV>0){
                 if (stats_perenoel.LAST!="Special"){
-                    Degats_speciaux(stats_perenoel,stats_pingouine);
+                    stats_pingouine.Poison=true
+                    stats_pingouine.Tourpoison=5
                     Disable();
                     pere_noel.style.filter ="none";
                     mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    dialogue.innerHTML = "Pere noel a empoisonné la pingouine pendant 5 tours"+"<br/>"+dialogue.innerHTML;
+                    special=false;
+                    spece.style.backgroundColor="grey";
+                    defens.style.backgroundColor="grey";
+                    attack.style.backgroundColor="grey"; 
+                    stats_perenoel.LAST = "Special"
+                    stats_perenoel.DEF = 0;
+                    stats_perenoel.PM -= 50
+                    tour+=1
+                    Fin();
                 }
                 else if (stats_perenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -756,10 +786,21 @@ orque.onclick= function Orque(){                                // Interaction a
         if(tour==1){
             if(stats_perenoel.PV>0){
                 if (stats_perenoel.LAST!="Special"){
-                    Degats_speciaux(stats_perenoel,stats_orque);
+                    stats_orque.Poison=true
+                    stats_orque.Tourpoison=5
                     Disable();
                     pere_noel.style.filter ="none";
                     mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    dialogue.innerHTML = "Pere noel a empoisonné l'orque pendant 5 tours"+"<br/>"+dialogue.innerHTML;
+                    special=false;
+                    spece.style.backgroundColor="grey";
+                    defens.style.backgroundColor="grey";
+                    attack.style.backgroundColor="grey"; 
+                    stats_perenoel.LAST = "Special"
+                    stats_perenoel.DEF = 0;
+                    stats_perenoel.PM -= 50
+                    tour+=1
+                    Fin();
                 }
                 else if (stats_perenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -1049,29 +1090,54 @@ function Tour_orque(){                                          // Riposte de l'
 
 // Assemblage de toutes les fonctions permettant la riposte 
 function Riposte(){
+    
     random = Math.floor(Math.random() * 4)+1;
     if(tour==5){
         setTimeout(() => {
-            Tour_pingouin()                        //tour pingouin apres 2 secondes
+            Tour_pingouin()                        //tour pingouin apres 4 secondes
+            if (stats_pingouin.Poison == true){         // Poison
+                stats_pingouin.PV -= stats_perenoel.ATKSPE
+                stats_pingouin.Tourpoison -= 1
+                dialogue.innerHTML = "Le pingouin prend"+ stats_perenoel.ATKSPE +"points de degats du au poison" + "<br/>"+dialogue.innerHTML
+                    if (stats_pingouin.Tourpoison ==0){
+                        stats_pingouin.Poison = false
+                    }
+            }
             pingouin.style.filter ="none";
             pingouine.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
-        }, 2000) 
+        }, 4000) 
     }
     setTimeout(() => {
         random = Math.floor(Math.random() * 4)+1;
         if (tour==6){
-            Tour_pingouine()                        //tour pingouine apres 2 secondes
+            Tour_pingouine()                        //tour pingouine apres 4 secondes
+            if (stats_pingouine.Poison == true){        //poison
+                stats_pingouine.PV -= stats_perenoel.ATKSPE
+                stats_pingouine.Tourpoison -= 1
+                dialogue.innerHTML = "La pingouine prend"+ stats_perenoel.ATKSPE +"points de degats du au poison" + "<br/>"+dialogue.innerHTML
+                    if (stats_pingouine.Tourpoison ==0){
+                        stats_pingouine.Poison = false
+                    }
+            }
             pingouine.style.filter ="none";
             orque.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
         }
-    }, 4000) 
+    }, 8000) 
     setTimeout(() => {
         random = Math.floor(Math.random() * 4)+1;
         if (tour==7){
-            Tour_orque()                        //tour orque apres 2 secondes
+            Tour_orque()                        //tour orque apres 4 secondes
+            if (stats_orque.Poison == true){         //poison
+                stats_orque.PV -= stats_perenoel.ATKSPE
+                stats_orque.Tourpoison -= 1
+                dialogue.innerHTML = "L'orque prend"+ stats_perenoel.ATKSPE +"points de degats du au poison" + "<br/>"+dialogue.innerHTML
+                    if (stats_orque.Tourpoison ==0){
+                        stats_orque.Poison = false
+                    }
+            }
             orque.style.filter ="none";
             pere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
         }
         Disable();
-    }, 6000) 
+    }, 12000) 
 }
