@@ -203,6 +203,8 @@ function Degats(stats_att,stats_cible){
     }
     attaque = false;                                //bouton attaque désactivé
     attack.style.backgroundColor="grey";            //Affichage bouton par défaut
+    spece.style.backgroundColor="grey";
+    defens.style.backgroundColor="grey";
     stats_att.LAST = "Attaque"
     Fin();                                          // vérification condition victoire
 }
@@ -219,6 +221,8 @@ function Degats_speciaux(stats_att,stats_cible){
     }
     special = false;                                    //bouton attaque spéciale désactivé
     spece.style.backgroundColor="grey";
+    defens.style.backgroundColor="grey";
+    attack.style.backgroundColor="grey"; 
     stats_att.LAST = "Special"
     Fin();
 }
@@ -227,10 +231,13 @@ function Degats_speciaux(stats_att,stats_cible){
 function Defense(stats_cible){
     stats_cible.DEF = 150;
     defens.style.backgroundColor="grey";
+    spece.style.backgroundColor="grey";
+    attack.style.backgroundColor="grey"; 
     tour=tour+1;
     defense = false;
     stats_cible.LAST = "Defense"
     dialogue.innerHTML =stats_cible.NOM + " se protege jusqu'au prochain tour" + "<br/>" +dialogue.innerHTML;
+    Fin()
 }
 
 //Vérification de la condition Victoire et de la condition défaite
@@ -307,7 +314,6 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 else if (stats_perenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 attaque=false;
-                attack.style.backgroundColor="black";
                 }
             }
             else{
@@ -329,7 +335,6 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 else if (stats_merenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 attaque=false;
-                attack.style.backgroundColor="black";
                 } 
             } 
             else{
@@ -347,7 +352,6 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 else if (stats_lutin.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 attaque=false;
-                attack.style.backgroundColor="black";
                 } 
             } 
             else{
@@ -366,7 +370,6 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 else if (stats_cerf.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 attaque=false;
-                attack.style.backgroundColor="black";
                 }
             }
             else{
@@ -391,7 +394,6 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 else if (stats_perenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 special=false;
-                spece.style.backgroundColor="black";
                 }
             }
             else{
@@ -409,7 +411,6 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 else if (stats_merenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 special=false;
-                spece.style.backgroundColor="black";
                 }
             }  
             else{
@@ -427,7 +428,6 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 else if (stats_lutin.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 special=false;
-                spece.style.backgroundColor="black";
                 }
             }
             else{
@@ -446,7 +446,6 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 else if (stats_cerf.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 special=false;
-                spece.style.backgroundColor="black";
                 }
             }
             else{
@@ -473,7 +472,6 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 else if (stats_perenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 attaque=false;
-                attack.style.backgroundColor="black";
                 }
             }
             else{
@@ -491,7 +489,6 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 else if (stats_merenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 attaque=false;
-                attack.style.backgroundColor="black";
                 } 
             } 
             else{
@@ -509,7 +506,6 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 else if (stats_lutin.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 attaque=false;
-                attack.style.backgroundColor="black";
                 } 
             } 
             else{
@@ -528,7 +524,6 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 else if (stats_cerf.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 attaque=false;
-                attack.style.backgroundColor="black";
                 }
             }
             else{
@@ -553,7 +548,6 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 else if (stats_perenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 special=false;
-                spece.style.backgroundColor="black";
                 }
             }
             else{
@@ -571,7 +565,6 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 else if (stats_merenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 special=false;
-                spece.style.backgroundColor="black";
                 }
             }  
             else{
@@ -589,7 +582,6 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 else if (stats_lutin.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 special=false;
-                spece.style.backgroundColor="black";
                 }
             }
             else{
@@ -608,7 +600,6 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 else if (stats_cerf.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 special=false;
-                spece.style.backgroundColor="black";
                 }
             }
             else{
@@ -635,7 +626,6 @@ orque.onclick= function Orque(){                                // Interaction a
                 else if (stats_perenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 attaque=false;
-                attack.style.backgroundColor="black";
                 }
             }
             else{
@@ -653,7 +643,6 @@ orque.onclick= function Orque(){                                // Interaction a
                 else if (stats_merenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 attaque=false;
-                attack.style.backgroundColor="black";
                 } 
             } 
             else{
@@ -671,7 +660,6 @@ orque.onclick= function Orque(){                                // Interaction a
                 else if (stats_lutin.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 attaque=false;
-                attack.style.backgroundColor="black";
                 } 
             } 
             else{
@@ -690,7 +678,6 @@ orque.onclick= function Orque(){                                // Interaction a
                 else if (stats_cerf.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 attaque=false;
-                attack.style.backgroundColor="black";
                 }
             }
             else{
@@ -715,7 +702,6 @@ orque.onclick= function Orque(){                                // Interaction a
                 else if (stats_perenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 special=false;
-                spece.style.backgroundColor="black";
                 }
             }
             else{
@@ -733,7 +719,6 @@ orque.onclick= function Orque(){                                // Interaction a
                 else if (stats_merenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 special=false;
-                spece.style.backgroundColor="black";
                 }
             }  
             else{
@@ -751,7 +736,6 @@ orque.onclick= function Orque(){                                // Interaction a
                 else if (stats_lutin.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 special=false;
-                spece.style.backgroundColor="black";
                 }
             }
             else{
@@ -770,7 +754,6 @@ orque.onclick= function Orque(){                                // Interaction a
                 else if (stats_cerf.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
                 special=false;
-                spece.style.backgroundColor="black";
                 }
             }
             else{
