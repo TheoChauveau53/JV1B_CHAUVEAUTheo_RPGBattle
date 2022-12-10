@@ -68,6 +68,8 @@ var attaque=false
 var defense=false
 var special=false
 // Affichage des stats  quand on passe la souris sur un perso
+pere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)"; // PAr défaut tour pere noel donc bleu
+
 function Affich_stats(perso,stats_perso){
     perso.style.filter ="drop-shadow(0 1rem 3rem #ff0000)";
     affichage_stats.style.visibility = "visible";
@@ -152,13 +154,10 @@ function Degats_speciaux(stats_att,stats_cible){
     if(tour==8){
         tour=1
     }
-    special = false;                                //bouton attaque spéciale désactivé
+    special = false;                                    //bouton attaque spéciale désactivé
 }
 
-
-
-pere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
-
+// Activation des boutons et désactivation des autres lors de la pression
 attack.onclick= function(){
     if(attaque==true){
         attaque=false;
@@ -170,8 +169,14 @@ attack.onclick= function(){
     }
 }
 defens.onclick= function(){
+    if(defense==true){
+        defense=false;
+    }
+    else{
         attaque=false;
+        defense=true;
         special=false;
+    }
 }
 spece.onclick= function(){
     if(special==true){
@@ -184,8 +189,8 @@ spece.onclick= function(){
     }
 }
 
-pingouin.onclick= function Pingouin(){
-    if(attaque==true){
+pingouin.onclick= function Pingouin(){                      // Interaction avec pingouin
+    if(attaque==true){                                      // Dégats d'attaque normale 
         if(tour==1){
             if(stats_perenoel.PV>0){
                 Degats(stats_perenoel,stats_pingouin);
@@ -216,10 +221,12 @@ pingouin.onclick= function Pingouin(){
         else if(tour==4){
             if(stats_cerf.PV>0){
                 Degats(stats_cerf,stats_pingouin);
+                Riposte();
             }
             else{
                 tour= tour+1
-                Pingouin()
+                Pingouin();
+                Riposte();
             }
         }
         if (stats_pingouin.PV <=0){
@@ -227,9 +234,12 @@ pingouin.onclick= function Pingouin(){
             dialogue.innerHTML = " Le pingouin est mort"
         }
     }
+    if(special==true){                                      // Dégats d'attque spéciale
+
+    }
 }
 
-pingouine.onclick= function Pingouine(){
+pingouine.onclick= function Pingouine(){                    // Interaction avec pingouine
     if(attaque==true){
         if(tour==1){
             if(stats_perenoel.PV>0){
@@ -237,7 +247,7 @@ pingouine.onclick= function Pingouine(){
             }
             else{
                 tour=tour+1
-                Pingouine()
+                Pingouine();
             }
         }
         else if(tour==2){
@@ -245,8 +255,8 @@ pingouine.onclick= function Pingouine(){
                 Degats(stats_merenoel,stats_pingouine);
             }  
             else{
-                tour = tour+1
-                Pingouine()
+                tour = tour+1;
+                Pingouine();
             }
         }
         else if(tour==3){
@@ -254,17 +264,19 @@ pingouine.onclick= function Pingouine(){
                 Degats(stats_lutin,stats_pingouine);
             }
             else{
-                tour= tour+1
-                Pingouine()
+                tour= tour+1;
+                Pingouine();
             }
         }
         else if(tour==4){
             if(stats_cerf.PV>0){
                 Degats(stats_cerf,stats_pingouine);
+                Riposte();
             }
             else{
                 tour= tour+1
-                Pingouine()
+                Pingouine();
+                Riposte();
             }
         }
         if (stats_pingouine.PV <=0){
@@ -273,15 +285,15 @@ pingouine.onclick= function Pingouine(){
         }
     } 
 }
-orque.onclick= function Orque(){
+orque.onclick= function Orque(){                                // Interaction avec orque
     if(attaque==true){
         if(tour==1){
             if(stats_perenoel.PV>0){
                 Degats(stats_perenoel,stats_orque);
             }
             else{
-                tour=tour+1
-                Orque()
+                tour=tour+1;
+                Orque();
             }
         }
         else if(tour==2){
@@ -289,8 +301,8 @@ orque.onclick= function Orque(){
                 Degats(stats_merenoel,stats_orque);
             }  
             else{
-                tour = tour+1
-                Orque()
+                tour = tour+1;
+                Orque();
             }
         }
         else if(tour==3){
@@ -298,19 +310,19 @@ orque.onclick= function Orque(){
                 Degats(stats_lutin,stats_orque);
             }
             else{
-                tour= tour+1
-                Orque()
+                tour= tour+1;
+                Orque();
             }
         }
         else if(tour==4){
             if(stats_cerf.PV>0){
                 Degats(stats_cerf,stats_orque);
-                Riposte()
+                Riposte();
             }
             else{
-                tour= tour+1
-                Orque()
-                Riposte()
+                tour= tour+1;
+                Orque();
+                Riposte();
             }
         }
         if (stats_orque.PV <=0){
@@ -320,64 +332,153 @@ orque.onclick= function Orque(){
     }
 }
 
-function Riposte(){
-    random = Math.floor(Math.random() * 4)+1;
-    console.log(random)
-    if(tour==5){
-        if(stats_pingouin.PV>0){
-            if (random==1){
+// Fonctions permettant la riposte des ennemis
+function Tour_pingouin(){                                          // Riposte du pingouin 
+    if(stats_pingouin.PV>0){
+        if (random==1){
+            if (stats_perenoel.PV>0){
                 Degats(stats_pingouin,stats_perenoel)
             }
-            if (random==2){
+            else{
+                random = random +1
+            }
+        }
+        if (random==2){
+            if (stats_merenoel.PV>0){
                 Degats(stats_pingouin,stats_merenoel)
             }
-            if (random==3){
+            else{
+                random = random +1
+            }
+        }
+        if (random==3){
+            if (stats_lutin.PV>0){
                 Degats(stats_pingouin,stats_lutin)
             }
-            if (random==4){
+            else{
+                random = random +1
+            }
+        }
+        if (random==4){
+            if (stats_cerf.PV>0){
                 Degats(stats_pingouin,stats_cerf)
             }
-        }
-        else{
-            tour=tour+1
+            else{
+                random = 1
+                Tour_pingouin()    // Recommence pour voir qui est en vie s'il n'a pas encore attaqué
+            }
         }
     }
-    if (tour==6){
-        if(stats_pingouine.PV>0){
-            if (random==1){
+    else{
+        tour=tour+1         // Passer tour si pingouin mort
+    }
+}
+
+function Tour_pingouine(){                                          // Riposte de la pingouine 
+    if(stats_pingouine.PV>0){
+        if (random==1){
+            if (stats_perenoel.PV>0){
                 Degats(stats_pingouine,stats_perenoel)
             }
-            if (random==2){
+            else{
+                random = random +1
+            }
+        }
+        if (random==2){
+            if (stats_merenoel.PV>0){
                 Degats(stats_pingouine,stats_merenoel)
             }
-            if (random==3){
+            else{
+                random = random +1
+            }
+        }
+        if (random==3){
+            if (stats_lutin.PV>0){
                 Degats(stats_pingouine,stats_lutin)
             }
-            if (random==4){
+            else{
+                random = random +1
+            }
+        }
+        if (random==4){
+            if (stats_cerf.PV>0){
                 Degats(stats_pingouine,stats_cerf)
             }
-        }
-        else{
-            tour=tour+1
+            else{
+                random = 1
+                Tour_pingouine()    // Recommence pour voir qui est en vie 
+            }
         }
     }
-    if (tour==7){
-        if(stats_orque.PV>0){
-            if (random==1){
+    else{
+        tour=tour+1         // Passer tour si pingouine morte 
+    }
+}
+
+
+
+
+function Tour_orque(){                                          // Riposte de l'orque 
+    if(stats_orque.PV>0){
+        if (random==1){
+            if (stats_perenoel.PV>0){
                 Degats(stats_orque,stats_perenoel)
             }
-            if (random==2){
+            else{
+                random = random +1
+            }
+        }
+        if (random==2){
+            if (stats_merenoel.PV>0){
                 Degats(stats_orque,stats_merenoel)
             }
-            if (random==3){
+            else{
+                random = random +1
+            }
+        }
+        if (random==3){
+            if (stats_lutin.PV>0){
                 Degats(stats_orque,stats_lutin)
             }
-            if (random==4){
-                Degats(stats_orque,stats_cerf)
+            else{
+                random = random +1
             }
         }
-        else{
-            tour=tour+1
+        if (random==4){
+            if (stats_cerf.PV>0){
+                Degats(stats_orque,stats_cerf)
+            }
+            else{
+                random = 1
+                Tour_orque()    // Recommence pour voir qui est en vie 
+            }
         }
     }
+    else{
+        tour=1        // Passer tour si orque morte 
+    }
+}
+
+
+
+// Assemblage de toutes les fonctions permettant la riposte 
+function Riposte(){
+    random = Math.floor(Math.random() * 4)+1;
+    if(tour==5){
+        setTimeout(() => {
+            Tour_pingouin()                        //tour pingouin apres 5 secondes
+        }, 5000) 
+    }
+    setTimeout(() => {
+        random = Math.floor(Math.random() * 4)+1;
+        if (tour==6){
+            Tour_pingouine()                        //tour pingouine apres 5 secondes
+        }
+    }, 10000) 
+    setTimeout(() => {
+        random = Math.floor(Math.random() * 4)+1;
+        if (tour==7){
+            Tour_orque()                        //tour orque apres 5 secondes
+        }
+    }, 15000) 
 }
