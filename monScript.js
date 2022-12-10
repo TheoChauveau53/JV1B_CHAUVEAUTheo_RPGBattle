@@ -3,64 +3,78 @@ var stats_perenoel = {
     NOM : "pere Noel",
     PVmax : 700,    //PV max
     PV : 700,       //PV actuel
-    PMmax : 1100,   //PM max
-    PM : 1100,      //PM actuel
+    PMmax : 100,   //PM max
+    PM : 100,      //PM actuel
     ATK : 600,      //Degats d'attaque
-    ATKSPE : 900,   //Degats d'attaque special 
+    ATKSPE : 900,   //Degats d'attaque special
+    DEF : 0,        // Réduction des dégats avec défense
+    LAST : "",       // Derniere action effectué
 }
 var stats_merenoel = {
     NOM : "mere Noel",
     PVmax : 1100,
     PV : 1100,
-    PMmax : 1100,
-    PM : 1100,
+    PMmax : 100,
+    PM : 100,
     ATK : 300,
     ATKSPE : 600,
+    DEF : 0,
+    LAST : "", 
 }
 var stats_lutin = {
     NOM : "lutin",
     PVmax : 1100,
     PV : 1100,
-    PMmax : 1100,
-    PM : 1100,
+    PMmax : 100,
+    PM : 100,
     ATK : 300,
     ATKSPE : 600,
+    DEF : 0,
+    LAST : "", 
 }
 var stats_cerf = {
     NOM : "cerf",
     PVmax : 1100,
     PV : 1100,
-    PMmax : 1100,
-    PM : 1100,
+    PMmax : 100,
+    PM : 100,
     ATK : 300,
     ATKSPE : 600,
+    DEF : 0,
+    LAST : "", 
 }
 var stats_pingouin = {
     NOM : "pingouin",
     PVmax : 1100,
     PV : 1100,
-    PMmax : 1100,
-    PM : 1100,
+    PMmax : 100,
+    PM : 100,
     ATK : 300,
     ATKSPE : 600,
+    DEF : 0,
+    LAST : "", 
 }
 var stats_pingouine = {
     NOM : "pingouine",
     PVmax : 1100,
     PV : 1100,
-    PMmax : 1100,
-    PM : 1100,
+    PMmax : 100,
+    PM : 100,
     ATK : 300,
     ATKSPE : 600,
+    DEF : 0,
+    LAST : "", 
 }
 var stats_orque = {
     NOM : "orque",
     PVmax : 1100,
     PV : 1100,
-    PMmax : 1100,
-    PM : 1100,
+    PMmax : 100,
+    PM : 100,
     ATK : 300,
     ATKSPE : 600,
+    DEF : 0,
+    LAST : "", 
 }
 //Variable tour
 var tour=1
@@ -134,8 +148,8 @@ orque.onmouseleave = function(){
 
 // Fonction infligeant les degats d'une attaque de base et qui gere le tour
 function Degats(stats_att,stats_cible){
-    stats_cible.PV = stats_cible.PV - stats_att.ATK;
-    dialogue.innerHTML =stats_att.NOM + " a infligé " + stats_att.ATK + " dégats à " + stats_cible.NOM + "<br/>"+dialogue.innerHTML;
+    stats_cible.PV = stats_cible.PV - (stats_att.ATK - stats_cible.DEF);
+    dialogue.innerHTML =stats_att.NOM + " a infligé " + (stats_att.ATK - stats_cible.DEF) + " dégats à " + stats_cible.NOM + "<br/>"+dialogue.innerHTML;
     nombre_PV.innerHTML = stats_cible.PV + "PV";    //actualisation de l'affichage des PV
     prc_PV.value = stats_cible.PV;                  //actualisation de l'affichage des PV
     tour = tour+1;
@@ -143,13 +157,15 @@ function Degats(stats_att,stats_cible){
         tour=1;
     }
     attaque = false;                                //bouton attaque désactivé
-    Fin();
+    attack.style.backgroundColor="grey";            //Affichage bouton par défaut
+    stats_att.LAST = "Attaque"
+    Fin();                                          // vérification condition victoire
 }
 
 // Fonction infligeant les degats d'une attaque spéciale, retire le mana et gere le tour 
 function Degats_speciaux(stats_att,stats_cible){
-    stats_cible.PV = stats_cible.PV - stats_att.ATKSPE;
-    dialogue.innerHTML =stats_att.NOM + " a infligé " + stats_att.ATKSPE + " dégats à " + stats_cible.NOM + "<br/>"+dialogue.innerHTML;
+    stats_cible.PV = stats_cible.PV - (stats_att.ATKSPE - stats_cible.DEF);
+    dialogue.innerHTML =stats_att.NOM + " a infligé " + (stats_att.ATKSPE - stats_cible.DEF) + " dégats à " + stats_cible.NOM + "<br/>"+dialogue.innerHTML;
     nombre_PV.innerHTML = stats_cible.PV + "PV";    //actualisation de l'affichage des PV
     prc_PV.value = stats_cible.PV;                  //actualisation de l'affichage des PV
     tour = tour+1;
@@ -157,7 +173,19 @@ function Degats_speciaux(stats_att,stats_cible){
         tour=1;
     }
     special = false;                                    //bouton attaque spéciale désactivé
+    spece.style.backgroundColor="grey";
+    stats_att.LAST = "Special"
     Fin();
+}
+
+// Fonction permettant à un personnage de se défendre, ce qui réduit les dégats subis et gere le tour
+function Defense(stats_cible){
+    stats_cible.DEF = 150;
+    defens.style.backgroundColor="grey";
+    tour=tour+1;
+    defense = false;
+    stats_cible.LAST = "Defense"
+    dialogue.innerHTML =stats_cible.NOM + " se protege jusqu'au prochain tour" + "<br/>" +dialogue.innerHTML;
 }
 
 //Vérification de la condition Victoire et de la condition défaite
@@ -218,7 +246,14 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
     if(attaque==true){                                      // Dégats d'attaque normale 
         if(tour==1){
             if(stats_perenoel.PV>0){
-                Degats(stats_perenoel,stats_pingouin);
+                if (stats_perenoel.LAST!="Attaque"){
+                    Degats(stats_perenoel,stats_pingouin);
+                }
+                else if (stats_perenoel.LAST=="Attaque"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                attaque=false;
+                attack.style.backgroundColor="grey";
+                }
             }
             else{
                 tour=tour+1
@@ -227,17 +262,31 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
         }
         else if(tour==2){
             if(stats_merenoel.PV>0){
-                Degats(stats_merenoel,stats_pingouin);
-            }  
+                if (stats_merenoel.LAST!="Attaque"){
+                    Degats(stats_merenoel,stats_pingouin);
+                }
+                else if (stats_merenoel.LAST=="Attaque"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                attaque=false;
+                attack.style.backgroundColor="grey";
+                } 
+            } 
             else{
                 tour = tour+1
                 Pingouin()
             }
-        }
+        }   
         else if(tour==3){
             if(stats_lutin.PV>0){
-                Degats(stats_lutin,stats_pingouin);
-            }
+                if (stats_lutin.LAST!="Attaque"){
+                    Degats(stats_lutin,stats_pingouin);
+                }
+                else if (stats_lutin.LAST=="Attaque"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                attaque=false;
+                attack.style.backgroundColor="grey";
+                } 
+            } 
             else{
                 tour= tour+1
                 Pingouin()
@@ -245,8 +294,15 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
         }
         else if(tour==4){
             if(stats_cerf.PV>0){
-                Degats(stats_cerf,stats_pingouin);
-                Riposte();
+                if (stats_cerf.LAST!="Attaque"){
+                    Degats(stats_cerf,stats_pingouin);
+                    Riposte()
+                }
+                else if (stats_cerf.LAST=="Attaque"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                attaque=false;
+                attack.style.backgroundColor="grey";
+                }
             }
             else{
                 tour= tour+1
@@ -262,7 +318,14 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
     else if(special==true){                                      // Dégats d'attaque spéciale
         if(tour==1){
             if(stats_perenoel.PV>0){
-                Degats_speciaux(stats_perenoel,stats_pingouin);
+                if (stats_perenoel.LAST!="Special"){
+                    Degats_speciaux(stats_perenoel,stats_pingouin);
+                }
+                else if (stats_perenoel.LAST=="Special"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                special=false;
+                spece.style.backgroundColor="grey";
+                }
             }
             else{
                 tour=tour+1
@@ -271,7 +334,14 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
         }
         else if(tour==2){
             if(stats_merenoel.PV>0){
-                Degats_speciaux(stats_merenoel,stats_pingouin);
+                if (stats_merenoel.LAST!="Special"){
+                    Degats_speciaux(stats_merenoel,stats_pingouin);
+                }
+                else if (stats_merenoel.LAST=="Special"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                special=false;
+                spece.style.backgroundColor="grey";
+                }
             }  
             else{
                 tour = tour+1
@@ -280,7 +350,14 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
         }
         else if(tour==3){
             if(stats_lutin.PV>0){
-                Degats_speciaux(stats_lutin,stats_pingouin);
+                if (stats_lutin.LAST!="Special"){
+                    Degats_speciaux(stats_lutin,stats_pingouin);
+                }
+                else if (stats_lutin.LAST=="Special"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                special=false;
+                spece.style.backgroundColor="grey";
+                }
             }
             else{
                 tour= tour+1
@@ -289,8 +366,15 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
         }
         else if(tour==4){
             if(stats_cerf.PV>0){
-                Degats_speciaux(stats_cerf,stats_pingouin);
-                Riposte();
+                if (stats_cerf.LAST!="Special"){
+                    Degats_speciaux(stats_cerf,stats_pingouin);
+                    Riposte();
+                }
+                else if (stats_cerf.LAST=="Special"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                special=false;
+                spece.style.backgroundColor="grey";
+                }
             }
             else{
                 tour= tour+1
@@ -306,38 +390,66 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
 }
 
 pingouine.onclick= function Pingouine(){                    // Interaction avec pingouine
-    if(attaque==true){
+    if(attaque==true){                                      // Dégats d'attaque normale 
         if(tour==1){
             if(stats_perenoel.PV>0){
-                Degats(stats_perenoel,stats_pingouine);
+                if (stats_perenoel.LAST!="Attaque"){
+                    Degats(stats_perenoel,stats_pingouine);
+                }
+                else if (stats_perenoel.LAST=="Attaque"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                attaque=false;
+                attack.style.backgroundColor="grey";
+                }
             }
             else{
                 tour=tour+1
-                Pingouine();
+                Pingouine()
             }
         }
         else if(tour==2){
             if(stats_merenoel.PV>0){
-                Degats(stats_merenoel,stats_pingouine);
-            }  
+                if (stats_merenoel.LAST!="Attaque"){
+                    Degats(stats_merenoel,stats_pingouine);
+                }
+                else if (stats_merenoel.LAST=="Attaque"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                attaque=false;
+                attack.style.backgroundColor="grey";
+                } 
+            } 
             else{
-                tour = tour+1;
-                Pingouine();
+                tour = tour+1
+                Pingouine()
             }
-        }
+        }   
         else if(tour==3){
             if(stats_lutin.PV>0){
-                Degats(stats_lutin,stats_pingouine);
-            }
+                if (stats_lutin.LAST!="Attaque"){
+                    Degats(stats_lutin,stats_pingouine);
+                }
+                else if (stats_lutin.LAST=="Attaque"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                attaque=false;
+                attack.style.backgroundColor="grey";
+                } 
+            } 
             else{
-                tour= tour+1;
-                Pingouine();
+                tour= tour+1
+                Pingouine()
             }
         }
         else if(tour==4){
             if(stats_cerf.PV>0){
-                Degats(stats_cerf,stats_pingouine);
-                Riposte();
+                if (stats_cerf.LAST!="Attaque"){
+                    Degats(stats_cerf,stats_pingouine);
+                    Riposte();
+                }
+                else if (stats_cerf.LAST=="Attaque"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                attaque=false;
+                attack.style.backgroundColor="grey";
+                }
             }
             else{
                 tour= tour+1
@@ -346,42 +458,70 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
             }
         }
         if (stats_pingouine.PV <=0){
-            pingouine.style.display = 'none';
+            pingouin.style.display = "none";
             dialogue.innerHTML = " La pingouine est morte" +"<br/>"+dialogue.innerHTML
         }
-    } 
-    else if(special==true){
+    }
+    else if(special==true){                                      // Dégats d'attaque spéciale
         if(tour==1){
             if(stats_perenoel.PV>0){
-                Degats_speciaux(stats_perenoel,stats_pingouine);
+                if (stats_perenoel.LAST!="Special"){
+                    Degats_speciaux(stats_perenoel,stats_pingouine);
+                }
+                else if (stats_perenoel.LAST=="Special"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                special=false;
+                spece.style.backgroundColor="grey";
+                }
             }
             else{
                 tour=tour+1
-                Pingouine();
+                Pingouine()
             }
         }
         else if(tour==2){
             if(stats_merenoel.PV>0){
-                Degats_speciaux(stats_merenoel,stats_pingouine);
+                if (stats_merenoel.LAST!="Special"){
+                    Degats_speciaux(stats_merenoel,stats_pingouine);
+                }
+                else if (stats_merenoel.LAST=="Special"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                special=false;
+                spece.style.backgroundColor="grey";
+                }
             }  
             else{
-                tour = tour+1;
-                Pingouine();
+                tour = tour+1
+                Pingouine()
             }
         }
         else if(tour==3){
             if(stats_lutin.PV>0){
-                Degats_speciaux(stats_lutin,stats_pingouine);
+                if (stats_lutin.LAST!="Special"){
+                    Degats_speciaux(stats_lutin,stats_pingouine);
+                }
+                else if (stats_lutin.LAST=="Special"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                special=false;
+                spece.style.backgroundColor="grey";
+                }
             }
             else{
-                tour= tour+1;
-                Pingouine();
+                tour= tour+1
+                Pingouine()
             }
         }
         else if(tour==4){
             if(stats_cerf.PV>0){
-                Degats_speciaux(stats_cerf,stats_pingouine);
-                Riposte();
+                if (stats_cerf.LAST!="Special"){
+                    Degats_speciaux(stats_cerf,stats_pingouine);
+                    Riposte();
+                }
+                else if (stats_cerf.LAST=="Special"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                special=false;
+                spece.style.backgroundColor="grey";
+                }
             }
             else{
                 tour= tour+1
@@ -389,100 +529,178 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 Riposte();
             }
         }
-        if (stats_pingouine.PV <=0){
-            pingouine.style.display = 'none';
+        if (stats_pingouin.PV <=0){
+            pingouin.style.display = "none";
             dialogue.innerHTML = " La pingouine est morte" +"<br/>"+dialogue.innerHTML
         }
     }
 }
+
 orque.onclick= function Orque(){                                // Interaction avec orque
-    if(attaque==true){
+    if(attaque==true){                                      // Dégats d'attaque normale 
         if(tour==1){
             if(stats_perenoel.PV>0){
-                Degats(stats_perenoel,stats_orque);
+                if (stats_perenoel.LAST!="Attaque"){
+                    Degats(stats_perenoel,stats_orque);
+                }
+                else if (stats_perenoel.LAST=="Attaque"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                attaque=false;
+                attack.style.backgroundColor="grey";
+                }
             }
             else{
-                tour=tour+1;
-                Orque();
+                tour=tour+1
+                Orque()
             }
         }
         else if(tour==2){
             if(stats_merenoel.PV>0){
-                Degats(stats_merenoel,stats_orque);
-            }  
+                if (stats_merenoel.LAST!="Attaque"){
+                    Degats(stats_merenoel,stats_orque);
+                }
+                else if (stats_merenoel.LAST=="Attaque"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                attaque=false;
+                attack.style.backgroundColor="grey";
+                } 
+            } 
             else{
-                tour = tour+1;
-                Orque();
+                tour = tour+1
+                Orque()
             }
-        }
+        }   
         else if(tour==3){
             if(stats_lutin.PV>0){
-                Degats(stats_lutin,stats_orque);
-            }
+                if (stats_lutin.LAST!="Attaque"){
+                    Degats(stats_lutin,stats_orque);
+                }
+                else if (stats_lutin.LAST=="Attaque"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                attaque=false;
+                attack.style.backgroundColor="grey";
+                } 
+            } 
             else{
-                tour= tour+1;
-                Orque();
+                tour= tour+1
+                Orque()
             }
         }
         else if(tour==4){
             if(stats_cerf.PV>0){
-                Degats(stats_cerf,stats_orque);
-                Riposte();
+                if (stats_cerf.LAST!="Attaque"){
+                    Degats(stats_cerf,stats_orque);
+                    Riposte();
+                }
+                else if (stats_cerf.LAST=="Attaque"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                attaque=false;
+                attack.style.backgroundColor="grey";
+                }
             }
             else{
-                tour= tour+1;
+                tour= tour+1
                 Orque();
                 Riposte();
             }
         }
-        if (stats_orque.PV <=0){
-            orque.style.display = 'none';
-            dialogue.innerHTML =" L'orque est morte" +"<br/>"+dialogue.innerHTML
+        if (stats_pingouin.PV <=0){
+            pingouin.style.display = "none";
+            dialogue.innerHTML = " Le pingouin est mort" +"<br/>"+dialogue.innerHTML
         }
     }
-    else if(special==true){
+    else if(special==true){                                      // Dégats d'attaque spéciale
         if(tour==1){
             if(stats_perenoel.PV>0){
-                Degats_speciaux(stats_perenoel,stats_orque);
+                if (stats_perenoel.LAST!="Special"){
+                    Degats_speciaux(stats_perenoel,stats_orque);
+                }
+                else if (stats_perenoel.LAST=="Special"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                special=false;
+                spece.style.backgroundColor="grey";
+                }
             }
             else{
-                tour=tour+1;
-                Orque();
+                tour=tour+1
+                Orque()
             }
         }
         else if(tour==2){
             if(stats_merenoel.PV>0){
-                Degats_speciaux(stats_merenoel,stats_orque);
+                if (stats_merenoel.LAST!="Special"){
+                    Degats_speciaux(stats_merenoel,stats_orque);
+                }
+                else if (stats_merenoel.LAST=="Special"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                special=false;
+                spece.style.backgroundColor="grey";
+                }
             }  
             else{
-                tour = tour+1;
-                Orque();
+                tour = tour+1
+                Orque()
             }
         }
         else if(tour==3){
             if(stats_lutin.PV>0){
-                Degats_speciaux(stats_lutin,stats_orque);
+                if (stats_lutin.LAST!="Special"){
+                    Degats_speciaux(stats_lutin,stats_orque);
+                }
+                else if (stats_lutin.LAST=="Special"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                special=false;
+                spece.style.backgroundColor="grey";
+                }
             }
             else{
-                tour= tour+1;
-                Orque();
+                tour= tour+1
+                Orque()
             }
         }
         else if(tour==4){
             if(stats_cerf.PV>0){
-                Degats_speciaux(stats_cerf,stats_orque);
-                Riposte();
+                if (stats_cerf.LAST!="Special"){
+                    Degats_speciaux(stats_cerf,stats_orque);
+                    Riposte();
+                }
+                else if (stats_cerf.LAST=="Special"){
+                dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
+                special=false;
+                spece.style.backgroundColor="grey";
+                }
             }
             else{
-                tour= tour+1;
+                tour= tour+1
                 Orque();
                 Riposte();
             }
         }
-        if (stats_orque.PV <=0){
-            orque.style.display = 'none';
-            dialogue.innerHTML =" L'orque' est morte" +"<br/>"+dialogue.innerHTML
+        if (stats_pingouin.PV <=0){
+            pingouin.style.display = "none";
+            dialogue.innerHTML = " Le pingouin est mort" +"<br/>"+dialogue.innerHTML
         }
+    }
+}
+pere_noel.onclick= function(){
+    if (defense==true && tour==1){
+        Defense(stats_perenoel)
+    }
+}
+mere_noel.onclick= function(){
+    if (defense==true && tour==2){
+        Defense(stats_merenoel)
+    }
+}
+lutin.onclick= function(){
+    if (defense==true && tour==3){
+        Defense(stats_lutin)
+    }
+}
+cerf.onclick= function(){
+    if (defense==true && tour==4){
+        Defense(stats_cerf)
+        Riposte()
     }
 }
 
