@@ -89,6 +89,7 @@ var defense=false
 var special=false
 // Affichage des stats  quand on passe la souris sur un perso
 pere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)"; // PAr défaut tour pere noel donc bleu
+pere_noel.src="images/perenoel_anim.gif"
 function Disable(){                                 // Affichage en noir des boutons quand deja utilisé l'action
     if(tour==1 && stats_perenoel.PV>0){
         if(stats_perenoel.LAST=="Attaque"){
@@ -320,8 +321,10 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 if (stats_perenoel.LAST!="Attaque"){
                     Degats(stats_perenoel,stats_pingouin);
                     Disable();
+                    pere_noel.src="images/pere_noel.png"
                     pere_noel.style.filter ="none";             // Pas le tour de pere noel
                     mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)"; // mere noel en bleu
+                    mere_noel.src="images/merenoel_anim.gif"
                 }
                 else if (stats_perenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -333,6 +336,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 Pingouin();
                 Disable();
                 mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                mere_noel.src="images/merenoel_anim.gif"
             }
             if (stats_pingouin.PV <=0){
             pingouin.style.display = "none";
@@ -345,7 +349,9 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                     Degats(stats_merenoel,stats_pingouin);
                     Disable();
                     mere_noel.style.filter ="none";
-                    lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";     
+                    mere_noel.src="images/mere_noel.png"
+                    lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    lutin.src="images/lutin_anim.gif"   
                 }
                 else if (stats_merenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -357,6 +363,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 Pingouin()
                 Disable();
                 lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                lutin.src="images/lutin_anim.gif"
             }
         }   
         else if(tour==3){
@@ -365,7 +372,9 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                     Degats(stats_lutin,stats_pingouin);
                     Disable();
                     lutin.style.filter ="none";
+                    lutin.src="images/lutin.png"
                     cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    cerf.src="images/cerf_anim.gif"
                 }
                 else if (stats_lutin.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -377,6 +386,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 Pingouin();
                 Disable();
                 cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                cerf.src="images/cerf_anim.gif"
             }
         }
         else if(tour==4){
@@ -386,6 +396,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                     Riposte();
                     Disable();
                     cerf.style.filter ="none";
+                    cerf.src="images/cerf.png"
                     pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_cerf.LAST=="Attaque"){
@@ -414,7 +425,9 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                     stats_pingouin.Tourpoison=5
                     Disable();
                     pere_noel.style.filter ="none";
+                    pere_noel.src="images/pere_noel.png"
                     mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    mere_noel.src="images/merenoel_anim.gif"
                     dialogue.innerHTML = "Pere noel a empoisonné le pingouin pendant 5 tours"+"<br/>"+dialogue.innerHTML;
                     special=false;
                     spece.style.backgroundColor="grey";
@@ -436,6 +449,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 Pingouin()
                 Disable();
                 mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                mere_noel.src="images/merenoel_anim.gif"
             }
         }
         else if(tour==2){
@@ -444,7 +458,9 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                     Degats_speciaux(stats_merenoel,stats_pingouin);
                     Disable();
                     mere_noel.style.filter ="none";
+                    mere_noel.src="images/mere_noel.png"
                     lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    lutin.src="images/lutin_anim.gif"
                 }
                 else if (stats_merenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -456,6 +472,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 Pingouin()
                 Disable();
                 lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                lutin.src="images/lutin_anim.gif"
             }
         }
         else if(tour==3){
@@ -464,7 +481,9 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                     Degats_speciaux(stats_lutin,stats_pingouin);
                     Disable();
                     lutin.style.filter ="none";
+                    lutin.src="images/lutin.png"
                     cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    cerf.src="images/cerf_anim.gif"
                 }
                 else if (stats_lutin.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -476,6 +495,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 Pingouin();
                 Disable();
                 cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                cerf.src="images/cerf_anim.gif"
             }
         }
         else if(tour==4){
@@ -485,6 +505,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                     Riposte();
                     Disable();
                     cerf.style.filter ="none";
+                    cerf.src="images/cerf.png"
                     pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_cerf.LAST=="Special"){
@@ -514,7 +535,9 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                     Degats(stats_perenoel,stats_pingouine);
                     Disable();
                     pere_noel.style.filter ="none";
+                    pere_noel.src="images/pere_noel.png"
                     mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    mere_noel.src="images/merenoel_anim.gif"
                 }
                 else if (stats_perenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -526,6 +549,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 Pingouine()
                 Disable();
                 mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                mere_noel.src="images/merenoel_anim.gif"
             }
         }
         else if(tour==2){
@@ -534,7 +558,9 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                     Degats(stats_merenoel,stats_pingouine);
                     Disable();
                     mere_noel.style.filter ="none";
+                    mere_noel.src="images/mere_noel.png"
                     lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    lutin.src="images/lutin_anim.gif"
                 }
                 else if (stats_merenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -546,6 +572,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 Pingouine()
                 Disable();
                 lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                lutin.src="images/lutin_anim.gif"
             }
         }   
         else if(tour==3){
@@ -554,7 +581,9 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                     Degats(stats_lutin,stats_pingouine);
                     Disable();
                     lutin.style.filter ="none";
+                    lutin.src="images/lutin.png"
                     cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    cerf.src="images/cerf_anim.gif"
                 }
                 else if (stats_lutin.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -566,6 +595,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 Pingouine();
                 Disable();
                 cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                cerf.src="images/cerf_anim.gif"
             }
         }
         else if(tour==4){
@@ -575,6 +605,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                     Riposte();
                     Disable();
                     cerf.style.filter ="none";
+                    cerf.src="images/cerf.png"
                     pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_cerf.LAST=="Attaque"){
@@ -603,7 +634,9 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                     stats_pingouine.Tourpoison=5
                     Disable();
                     pere_noel.style.filter ="none";
+                    pere_noel.src="images/pere_noel.png"
                     mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    mere_noel.src="images/merenoel_anim.gif"
                     dialogue.innerHTML = "Pere noel a empoisonné la pingouine pendant 5 tours"+"<br/>"+dialogue.innerHTML;
                     special=false;
                     spece.style.backgroundColor="grey";
@@ -625,6 +658,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 Pingouine()
                 Disable();
                 mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                mere_noel.src="images/merenoel_anim.gif"
             }
         }
         else if(tour==2){
@@ -633,7 +667,9 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                     Degats_speciaux(stats_merenoel,stats_pingouine);
                     Disable();
                     mere_noel.style.filter ="none";
+                    mere_noel.src="images/mere_noel.png"
                     lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    lutin.src="images/lutin_anim.gif"
                 }
                 else if (stats_merenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -645,6 +681,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 Pingouine();
                 Disable();
                 lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                lutin.src="images/lutin_anim.gif"
             }
         }
         else if(tour==3){
@@ -653,7 +690,9 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                     Degats_speciaux(stats_lutin,stats_pingouine);
                     Disable();
                     lutin.style.filter ="none";
+                    lutin.src="images/lutin.png"
                     cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    cerf.src="images/cerf_anim.gif"
                 }
                 else if (stats_lutin.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -665,6 +704,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 Pingouine();
                 Disable();
                 cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                cerf.src="images/cerf_anim.gif"
             }
         }
         else if(tour==4){
@@ -674,6 +714,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                     Riposte();
                     Disable();
                     cerf.style.filter ="none";
+                    cerf.src="images/cerf.png"
                     pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_cerf.LAST=="Special"){
@@ -703,7 +744,9 @@ orque.onclick= function Orque(){                                // Interaction a
                     Degats(stats_perenoel,stats_orque);
                     Disable();
                     pere_noel.style.filter ="none";
+                    pere_noel.src="images/pere_noel.png"
                     mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    mere_noel.src="images/merenoel_anim.gif"
                 }
                 else if (stats_perenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -715,6 +758,7 @@ orque.onclick= function Orque(){                                // Interaction a
                 Orque()
                 Disable();
                 mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                mere_noel.src="images/merenoel_anim.gif"
             }
         }
         else if(tour==2){
@@ -723,7 +767,9 @@ orque.onclick= function Orque(){                                // Interaction a
                     Degats(stats_merenoel,stats_orque);
                     Disable();
                     mere_noel.style.filter ="none";
+                    mere_noel.src="images/mere_noel.png"
                     lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    lutin.src="images/lutin_anim.gif"
                 }
                 else if (stats_merenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -735,6 +781,7 @@ orque.onclick= function Orque(){                                // Interaction a
                 Orque()
                 Disable();
                 lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                lutin.src="images/lutin_anim.gif"
             }
         }   
         else if(tour==3){
@@ -743,7 +790,9 @@ orque.onclick= function Orque(){                                // Interaction a
                     Degats(stats_lutin,stats_orque);
                     Disable();
                     lutin.style.filter ="none";
+                    lutin.src="images/lutin.png"
                     cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    cerf.src="images/cerf_anim.gif"
                 }
                 else if (stats_lutin.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -755,6 +804,7 @@ orque.onclick= function Orque(){                                // Interaction a
                 Orque()
                 Disable();
                 cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                cerf.src="images/cerf_anim.gif"
             }
         }
         else if(tour==4){
@@ -764,6 +814,7 @@ orque.onclick= function Orque(){                                // Interaction a
                     Riposte();
                     Disable();
                     cerf.style.filter ="none";
+                    cerf.src="images/cerf.png"
                     pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_cerf.LAST=="Attaque"){
@@ -792,7 +843,9 @@ orque.onclick= function Orque(){                                // Interaction a
                     stats_orque.Tourpoison=5
                     Disable();
                     pere_noel.style.filter ="none";
+                    pere_noel.src="images/pere_noel.png"
                     mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    mere_noel.src="images/merenoel_anim.gif"
                     dialogue.innerHTML = "Pere noel a empoisonné l'orque pendant 5 tours"+"<br/>"+dialogue.innerHTML;
                     special=false;
                     spece.style.backgroundColor="grey";
@@ -814,6 +867,7 @@ orque.onclick= function Orque(){                                // Interaction a
                 Orque()
                 Disable();
                 mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                mere_noel.src="images/merenoel_anim.gif"
             }
         }
         else if(tour==2){
@@ -822,7 +876,9 @@ orque.onclick= function Orque(){                                // Interaction a
                     Degats_speciaux(stats_merenoel,stats_orque);
                     Disable();
                     mere_noel.style.filter ="none";
+                    mere_noel.src="images/mere_noel.png"
                     lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    lutin.src="images/lutin_anim.gif"
                 }
                 else if (stats_merenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -834,6 +890,7 @@ orque.onclick= function Orque(){                                // Interaction a
                 Orque()
                 Disable();
                 lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                lutin.src="images/lutin_anim.gif"
             }
         }
         else if(tour==3){
@@ -842,7 +899,9 @@ orque.onclick= function Orque(){                                // Interaction a
                     Degats_speciaux(stats_lutin,stats_orque);
                     Disable();
                     lutin.style.filter ="none";
+                    lutin.src="images/lutin.png"
                     cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                    cerf.src="images/cerf_anim.gif"
                 }
                 else if (stats_lutin.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -854,6 +913,7 @@ orque.onclick= function Orque(){                                // Interaction a
                 Orque()
                 Disable();
                 cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+                cerf.src="images/cerf_anim.gif"
             }
         }
         else if(tour==4){
@@ -863,6 +923,7 @@ orque.onclick= function Orque(){                                // Interaction a
                     Riposte();
                     Disable();
                     cerf.style.filter ="none";
+                    cerf.src="images/cerf.png"
                     pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_cerf.LAST=="Special"){
@@ -889,7 +950,9 @@ pere_noel.onclick= function(){
         Defense(stats_perenoel);
         Disable();
         pere_noel.style.filter ="none";
+        pere_noel.src="images/pere_noel.png"
         mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+        mere_noel.src="images/merenoel_anim.gif"
     }
 }
 mere_noel.onclick= function(){
@@ -897,7 +960,9 @@ mere_noel.onclick= function(){
         Defense(stats_merenoel)
         Disable();
         mere_noel.style.filter ="none";
+        mere_noel.src="images/mere_noel.png"
         lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+        lutin.src="images/lutin_anim.gif"
     }
 }
 lutin.onclick= function(){
@@ -905,7 +970,9 @@ lutin.onclick= function(){
         Defense(stats_lutin)
         Disable();
         lutin.style.filter ="none";
+        lutin.src="images/lutin.png"
         cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+        cerf.src="images/cerf_anim.gif"
     }
 }
 cerf.onclick= function(){
@@ -914,6 +981,7 @@ cerf.onclick= function(){
         Riposte()
         Disable();
         cerf.style.filter ="none";
+        cerf.src="images/cerf.png"
         pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
     }
 }
@@ -1139,6 +1207,7 @@ function Riposte(){
             }
             orque.style.filter ="none";
             pere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
+            pere_noel.src="images/perenoel_anim.gif"
         }
         Disable();
     }, 12000) 

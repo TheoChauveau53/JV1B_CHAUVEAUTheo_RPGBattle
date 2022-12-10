@@ -28,6 +28,7 @@ button:hover{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    font-size : 2vh
 }
 
 #interface{
@@ -36,10 +37,10 @@ button:hover{
     display: flex;
     background-color:grey;
     justify-content: space-around;
+    font-size : 2vh
 }
 
 #dialogue{
-    font-size: 3vh;
     width: 33vw ;
     height: auto;
     background-color: darkgrey;
