@@ -174,31 +174,43 @@ function Fin(){
 attack.onclick= function(){
     if(attaque==true){
         attaque=false;
+        attack.style.backgroundColor="grey";
     }
     else{
         attaque=true;
         defense=false;
         special=false;
+        attack.style.backgroundColor="green";
+        defens.style.backgroundColor="grey";
+        spece.style.backgroundColor="grey";
     }
 }
 defens.onclick= function(){
     if(defense==true){
         defense=false;
+        defens.style.backgroundColor="grey";
     }
     else{
         attaque=false;
         defense=true;
         special=false;
+        defens.style.backgroundColor="green";
+        attack.style.backgroundColor="grey";
+        spece.style.backgroundColor="grey";
     }
 }
 spece.onclick= function(){
     if(special==true){
         special=false;
+        spece.style.backgroundColor="grey";
     }
     else{
         attaque=false;
         defense=false;
         special=true;
+        spece.style.backgroundColor="green";
+        defens.style.backgroundColor="grey";
+        attack.style.backgroundColor="grey";
     }
 }
 

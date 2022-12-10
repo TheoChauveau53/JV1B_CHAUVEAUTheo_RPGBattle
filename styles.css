@@ -13,7 +13,7 @@ button{
 }
 
 button:hover{
-    background-color: darkgrey ;
+    background-color: darkgrey
 }
 
 .persos{
@@ -22,7 +22,7 @@ button:hover{
 
 
 #scene{
-    background-image: url("images/fond.gif");
+    background-image: url("images/fond.png");
     background-size: cover;
     height: 90vh;
     display: flex;
