@@ -131,6 +131,7 @@ orque.onmouseenter = function(){
 orque.onmouseleave = function(){
     Masque_stats(7,orque)
 }
+
 // Fonction infligeant les degats d'une attaque de base et qui gere le tour
 function Degats(stats_att,stats_cible){
     stats_cible.PV = stats_cible.PV - stats_att.ATK;
@@ -139,10 +140,12 @@ function Degats(stats_att,stats_cible){
     prc_PV.value = stats_cible.PV;                  //actualisation de l'affichage des PV
     tour = tour+1;
     if(tour==8){
-        tour=1
+        tour=1;
     }
     attaque = false;                                //bouton attaque désactivé
+    Fin();
 }
+
 // Fonction infligeant les degats d'une attaque spéciale, retire le mana et gere le tour 
 function Degats_speciaux(stats_att,stats_cible){
     stats_cible.PV = stats_cible.PV - stats_att.ATKSPE;
@@ -151,9 +154,20 @@ function Degats_speciaux(stats_att,stats_cible){
     prc_PV.value = stats_cible.PV;                  //actualisation de l'affichage des PV
     tour = tour+1;
     if(tour==8){
-        tour=1
+        tour=1;
     }
     special = false;                                    //bouton attaque spéciale désactivé
+    Fin();
+}
+
+//Vérification de la condition Victoire et de la condition défaite
+function Fin(){
+    if(stats_pingouin.PV<=0 && stats_pingouine.PV<=0 && stats_orque.PV<=0){
+        dialogue.innerHTML="Vous avez gagné"
+    }
+    else if(stats_perenoel.PV<=0 && stats_merenoel.PV<=0 && stats_lutin.PV<=0 && stats_cerf.PV<=0){
+        dialogue.innerHTML="Vous avez perdu"
+    }
 }
 
 // Activation des boutons et désactivation des autres lors de la pression
@@ -411,7 +425,7 @@ orque.onclick= function Orque(){                                // Interaction a
         }
         if (stats_orque.PV <=0){
             orque.style.display = 'none';
-            dialogue.innerHTML =" L'orque' est morte" +"<br/>"+dialogue.innerHTML
+            dialogue.innerHTML =" L'orque est morte" +"<br/>"+dialogue.innerHTML
         }
     }
     else if(special==true){
