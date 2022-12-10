@@ -1,69 +1,69 @@
 // Stats persos
 var stats_perenoel = {
     NOM : "pere Noel",
-    PVmax : 700,    //PV max
-    PV : 700,       //PV actuel
+    PVmax : 150,    //PV max
+    PV : 150,       //PV actuel
     PMmax : 100,   //PM max
     PM : 100,      //PM actuel
-    ATK : 600,      //Degats d'attaque
+    ATK : 15,      //Degats d'attaque
     ATKSPE : 5,   //Degats d'attaque special
     DEF : 0,        // Réduction des dégats avec défense
     LAST : "",       // Derniere action effectué
 }
 var stats_merenoel = {
     NOM : "mere Noel",
-    PVmax : 1100,
-    PV : 1100,
+    PVmax : 100,
+    PV : 100,
     PMmax : 100,
     PM : 100,
-    ATK : 300,
-    ATKSPE : 600,
+    ATK : 20,
+    ATKSPE : 30,
     DEF : 0,
     LAST : "", 
 }
 var stats_lutin = {
     NOM : "lutin",
-    PVmax : 1100,
-    PV : 1100,
+    PVmax : 50,
+    PV : 50,
     PMmax : 100,
     PM : 100,
-    ATK : 300,
-    ATKSPE : 600,
+    ATK : 50,
+    ATKSPE : 60,
     DEF : 0,
     LAST : "", 
 }
 var stats_cerf = {
     NOM : "cerf",
-    PVmax : 1100,
-    PV : 1100,
+    PVmax : 100,
+    PV : 100,
     PMmax : 100,
     PM : 100,
-    ATK : 300,
-    ATKSPE : 600,
+    ATK : 20,
+    ATKSPE : 30,
     DEF : 0,
     LAST : "", 
 }
 var stats_pingouin = {
     NOM : "pingouin",
-    PVmax : 1100,
-    PV : 1100,
+    PVmax : 100,
+    PV : 100,
     PMmax : 100,
     PM : 100,
-    ATK : 300,
-    ATKSPE : 600,
+    ATK : 20,
+    ATKSPE : 30,
     DEF : 0,
-    LAST : "",
+    LAST : "", 
     Poison : false,
     Tourpoison : 0,
 }
 var stats_pingouine = {
     NOM : "pingouine",
-    PVmax : 1100,
-    PV : 1100,
+    PVmax : 100,
+    PV : 100,
     PMmax : 100,
     PM : 100,
-    ATK : 300,
-    ATKSPE : 600,
+    ATK : 20,
+    ATKSPE : 30,
     DEF : 0,
     LAST : "", 
     Poison : false,
@@ -71,12 +71,12 @@ var stats_pingouine = {
 }
 var stats_orque = {
     NOM : "orque",
-    PVmax : 1100,
-    PV : 1100,
+    PVmax : 100,
+    PV : 100,
     PMmax : 100,
     PM : 100,
-    ATK : 300,
-    ATKSPE : 600,
+    ATK : 20,
+    ATKSPE : 30,
     DEF : 0,
     LAST : "", 
     Poison : false,
@@ -219,9 +219,10 @@ function Degats(stats_att,stats_cible){
 // Fonction infligeant les degats d'une attaque spéciale, retire le mana et gere le tour 
 function Degats_speciaux(stats_att,stats_cible){
     stats_cible.PV = stats_cible.PV - (stats_att.ATKSPE - stats_cible.DEF);
+    stats_att.PM = stats_att.PM - 50;
     dialogue.innerHTML =stats_att.NOM + " a infligé " + (stats_att.ATKSPE - stats_cible.DEF) + " dégats à " + stats_cible.NOM + "<br/>"+dialogue.innerHTML;
     nombre_PV.innerHTML = stats_cible.PV + "PV";    //actualisation de l'affichage des PV
-    prc_PV.value = stats_cible.PV;                  //actualisation de l'affichage des PV
+    prc_PV.value = stats_cible.PV;                  //actualisation de l'affichage des PV            
     tour = tour+1;
     if(tour==8){
         tour=1;
