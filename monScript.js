@@ -310,6 +310,8 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 if (stats_perenoel.LAST!="Attaque"){
                     Degats(stats_perenoel,stats_pingouin);
                     Disable();
+                    pere_noel.style.filter ="none";             // Pas le tour de pere noel
+                    mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)"; // mere noel en bleu
                 }
                 else if (stats_perenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -320,6 +322,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 tour=tour+1
                 Pingouin();
                 Disable();
+                mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
             if (stats_pingouin.PV <=0){
             pingouin.style.display = "none";
@@ -331,6 +334,8 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 if (stats_merenoel.LAST!="Attaque"){
                     Degats(stats_merenoel,stats_pingouin);
                     Disable();
+                    mere_noel.style.filter ="none";
+                    lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";     
                 }
                 else if (stats_merenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -341,6 +346,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 tour = tour+1
                 Pingouin()
                 Disable();
+                lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }   
         else if(tour==3){
@@ -348,6 +354,8 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 if (stats_lutin.LAST!="Attaque"){
                     Degats(stats_lutin,stats_pingouin);
                     Disable();
+                    lutin.style.filter ="none";
+                    cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_lutin.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -358,6 +366,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 tour= tour+1;
                 Pingouin();
                 Disable();
+                cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         else if(tour==4){
@@ -366,6 +375,8 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                     Degats(stats_cerf,stats_pingouin);
                     Riposte();
                     Disable();
+                    cerf.style.filter ="none";
+                    pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_cerf.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -377,6 +388,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 Pingouin();
                 Riposte();
                 Disable();
+                pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         if (stats_pingouin.PV <=0){
@@ -390,6 +402,8 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 if (stats_perenoel.LAST!="Special"){
                     Degats_speciaux(stats_perenoel,stats_pingouin);
                     Disable();
+                    pere_noel.style.filter ="none";
+                    mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_perenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -400,6 +414,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 tour=tour+1
                 Pingouin()
                 Disable();
+                mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         else if(tour==2){
@@ -407,6 +422,8 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 if (stats_merenoel.LAST!="Special"){
                     Degats_speciaux(stats_merenoel,stats_pingouin);
                     Disable();
+                    mere_noel.style.filter ="none";
+                    lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_merenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -417,6 +434,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 tour = tour+1
                 Pingouin()
                 Disable();
+                lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         else if(tour==3){
@@ -424,6 +442,8 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 if (stats_lutin.LAST!="Special"){
                     Degats_speciaux(stats_lutin,stats_pingouin);
                     Disable();
+                    lutin.style.filter ="none";
+                    cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_lutin.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -434,6 +454,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 tour= tour+1;
                 Pingouin();
                 Disable();
+                cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         else if(tour==4){
@@ -442,6 +463,8 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                     Degats_speciaux(stats_cerf,stats_pingouin);
                     Riposte();
                     Disable();
+                    cerf.style.filter ="none";
+                    pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_cerf.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -453,6 +476,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
                 Pingouin();
                 Riposte();
                 Disable();
+                pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         if (stats_pingouin.PV <=0){
@@ -468,6 +492,8 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 if (stats_perenoel.LAST!="Attaque"){
                     Degats(stats_perenoel,stats_pingouine);
                     Disable();
+                    pere_noel.style.filter ="none";
+                    mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_perenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -478,6 +504,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 tour=tour+1
                 Pingouine()
                 Disable();
+                mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         else if(tour==2){
@@ -485,6 +512,8 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 if (stats_merenoel.LAST!="Attaque"){
                     Degats(stats_merenoel,stats_pingouine);
                     Disable();
+                    mere_noel.style.filter ="none";
+                    lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_merenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -495,6 +524,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 tour = tour+1
                 Pingouine()
                 Disable();
+                lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }   
         else if(tour==3){
@@ -502,6 +532,8 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 if (stats_lutin.LAST!="Attaque"){
                     Degats(stats_lutin,stats_pingouine);
                     Disable();
+                    lutin.style.filter ="none";
+                    cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_lutin.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -512,6 +544,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 tour= tour+1
                 Pingouine();
                 Disable();
+                cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         else if(tour==4){
@@ -520,6 +553,8 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                     Degats(stats_cerf,stats_pingouine);
                     Riposte();
                     Disable();
+                    cerf.style.filter ="none";
+                    pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_cerf.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -531,6 +566,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 Pingouine();
                 Riposte();
                 Disable();
+                pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         if (stats_pingouine.PV <=0){
@@ -544,6 +580,8 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 if (stats_perenoel.LAST!="Special"){
                     Degats_speciaux(stats_perenoel,stats_pingouine);
                     Disable();
+                    pere_noel.style.filter ="none";
+                    mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_perenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -554,6 +592,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 tour=tour+1
                 Pingouine()
                 Disable();
+                mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         else if(tour==2){
@@ -561,6 +600,8 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 if (stats_merenoel.LAST!="Special"){
                     Degats_speciaux(stats_merenoel,stats_pingouine);
                     Disable();
+                    mere_noel.style.filter ="none";
+                    lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_merenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -571,6 +612,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 tour = tour+1
                 Pingouine();
                 Disable();
+                lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         else if(tour==3){
@@ -578,6 +620,8 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 if (stats_lutin.LAST!="Special"){
                     Degats_speciaux(stats_lutin,stats_pingouine);
                     Disable();
+                    lutin.style.filter ="none";
+                    cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_lutin.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -588,6 +632,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 tour= tour+1
                 Pingouine();
                 Disable();
+                cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         else if(tour==4){
@@ -596,6 +641,8 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                     Degats_speciaux(stats_cerf,stats_pingouine);
                     Riposte();
                     Disable();
+                    cerf.style.filter ="none";
+                    pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_cerf.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -607,6 +654,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
                 Pingouine();
                 Riposte();
                 Disable();
+                pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         if (stats_pingouine.PV <=0){
@@ -622,6 +670,8 @@ orque.onclick= function Orque(){                                // Interaction a
                 if (stats_perenoel.LAST!="Attaque"){
                     Degats(stats_perenoel,stats_orque);
                     Disable();
+                    pere_noel.style.filter ="none";
+                    mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_perenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -632,6 +682,7 @@ orque.onclick= function Orque(){                                // Interaction a
                 tour=tour+1
                 Orque()
                 Disable();
+                mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         else if(tour==2){
@@ -639,6 +690,8 @@ orque.onclick= function Orque(){                                // Interaction a
                 if (stats_merenoel.LAST!="Attaque"){
                     Degats(stats_merenoel,stats_orque);
                     Disable();
+                    mere_noel.style.filter ="none";
+                    lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_merenoel.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -649,6 +702,7 @@ orque.onclick= function Orque(){                                // Interaction a
                 tour = tour+1
                 Orque()
                 Disable();
+                lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }   
         else if(tour==3){
@@ -656,6 +710,8 @@ orque.onclick= function Orque(){                                // Interaction a
                 if (stats_lutin.LAST!="Attaque"){
                     Degats(stats_lutin,stats_orque);
                     Disable();
+                    lutin.style.filter ="none";
+                    cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_lutin.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -666,6 +722,7 @@ orque.onclick= function Orque(){                                // Interaction a
                 tour= tour+1
                 Orque()
                 Disable();
+                cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         else if(tour==4){
@@ -674,6 +731,8 @@ orque.onclick= function Orque(){                                // Interaction a
                     Degats(stats_cerf,stats_orque);
                     Riposte();
                     Disable();
+                    cerf.style.filter ="none";
+                    pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_cerf.LAST=="Attaque"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -685,6 +744,7 @@ orque.onclick= function Orque(){                                // Interaction a
                 Orque();
                 Riposte();
                 Disable();
+                pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         if (stats_orque.PV <=0){
@@ -698,6 +758,8 @@ orque.onclick= function Orque(){                                // Interaction a
                 if (stats_perenoel.LAST!="Special"){
                     Degats_speciaux(stats_perenoel,stats_orque);
                     Disable();
+                    pere_noel.style.filter ="none";
+                    mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_perenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -708,6 +770,7 @@ orque.onclick= function Orque(){                                // Interaction a
                 tour=tour+1
                 Orque()
                 Disable();
+                mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         else if(tour==2){
@@ -715,6 +778,8 @@ orque.onclick= function Orque(){                                // Interaction a
                 if (stats_merenoel.LAST!="Special"){
                     Degats_speciaux(stats_merenoel,stats_orque);
                     Disable();
+                    mere_noel.style.filter ="none";
+                    lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_merenoel.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -725,6 +790,7 @@ orque.onclick= function Orque(){                                // Interaction a
                 tour = tour+1
                 Orque()
                 Disable();
+                lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         else if(tour==3){
@@ -732,6 +798,8 @@ orque.onclick= function Orque(){                                // Interaction a
                 if (stats_lutin.LAST!="Special"){
                     Degats_speciaux(stats_lutin,stats_orque);
                     Disable();
+                    lutin.style.filter ="none";
+                    cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_lutin.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -742,6 +810,7 @@ orque.onclick= function Orque(){                                // Interaction a
                 tour= tour+1
                 Orque()
                 Disable();
+                cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         else if(tour==4){
@@ -750,6 +819,8 @@ orque.onclick= function Orque(){                                // Interaction a
                     Degats_speciaux(stats_cerf,stats_orque);
                     Riposte();
                     Disable();
+                    cerf.style.filter ="none";
+                    pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
                 }
                 else if (stats_cerf.LAST=="Special"){
                 dialogue.innerHTML=" Vous avez déjà effectué cette action le tour précédent";
@@ -761,6 +832,7 @@ orque.onclick= function Orque(){                                // Interaction a
                 Orque();
                 Riposte();
                 Disable();
+                pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
             }
         }
         if (stats_orque.PV <=0){
@@ -773,18 +845,24 @@ pere_noel.onclick= function(){
     if (defense==true && tour==1){
         Defense(stats_perenoel);
         Disable();
+        pere_noel.style.filter ="none";
+        mere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
     }
 }
 mere_noel.onclick= function(){
     if (defense==true && tour==2){
         Defense(stats_merenoel)
         Disable();
+        mere_noel.style.filter ="none";
+        lutin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
     }
 }
 lutin.onclick= function(){
     if (defense==true && tour==3){
         Defense(stats_lutin)
         Disable();
+        lutin.style.filter ="none";
+        cerf.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
     }
 }
 cerf.onclick= function(){
@@ -792,6 +870,8 @@ cerf.onclick= function(){
         Defense(stats_cerf)
         Riposte()
         Disable();
+        cerf.style.filter ="none";
+        pingouin.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
     }
 }
 
@@ -973,18 +1053,24 @@ function Riposte(){
     if(tour==5){
         setTimeout(() => {
             Tour_pingouin()                        //tour pingouin apres 2 secondes
+            pingouin.style.filter ="none";
+            pingouine.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
         }, 2000) 
     }
     setTimeout(() => {
         random = Math.floor(Math.random() * 4)+1;
         if (tour==6){
             Tour_pingouine()                        //tour pingouine apres 2 secondes
+            pingouine.style.filter ="none";
+            orque.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
         }
     }, 4000) 
     setTimeout(() => {
         random = Math.floor(Math.random() * 4)+1;
         if (tour==7){
             Tour_orque()                        //tour orque apres 2 secondes
+            orque.style.filter ="none";
+            pere_noel.style.filter ="drop-shadow(0 1rem 3rem #0044ff)";
         }
         Disable();
     }, 6000) 
