@@ -134,7 +134,7 @@ orque.onmouseleave = function(){
 // Fonction infligeant les degats d'une attaque de base et qui gere le tour
 function Degats(stats_att,stats_cible){
     stats_cible.PV = stats_cible.PV - stats_att.ATK;
-    dialogue.innerHTML = stats_att.NOM + " a infligé " + stats_att.ATK + " dégats à " + stats_cible.NOM;
+    dialogue.innerHTML =stats_att.NOM + " a infligé " + stats_att.ATK + " dégats à " + stats_cible.NOM + "<br/>"+dialogue.innerHTML;
     nombre_PV.innerHTML = stats_cible.PV + "PV";    //actualisation de l'affichage des PV
     prc_PV.value = stats_cible.PV;                  //actualisation de l'affichage des PV
     tour = tour+1;
@@ -147,7 +147,7 @@ function Degats(stats_att,stats_cible){
 function Degats_speciaux(stats_att,stats_cible){
     stats_cible.PV = stats_cible - stats_att.ATKSPE;
     stats_att.PM = stats_att.PM - 50                    // Cout en mana 
-    dialogue.innerHTML = stats_att.NOM +" a infligé " + stats_att.ATKSPE + " dégats à " + stats_cible.NOM;
+    dialogue.innerHTML =stats_att.NOM +" a infligé " + stats_att.ATKSPE + " dégats à " + stats_cible.NOM + "<br/>"+dialogue.innerHTML;
     nombre_PV.innerHTML = stats_cible.PV + "PV";
     prc_PV.value = stats_cible.PV;
     tour = tour+1;
@@ -231,7 +231,7 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
         }
         if (stats_pingouin.PV <=0){
             pingouin.style.display = "none";
-            dialogue.innerHTML = " Le pingouin est mort"
+            dialogue.innerHTML = " Le pingouin est mort" +"<br/>"+dialogue.innerHTML
         }
     }
     if(special==true){                                      // Dégats d'attque spéciale
@@ -281,7 +281,7 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
         }
         if (stats_pingouine.PV <=0){
             pingouine.style.display = 'none';
-            dialogue.innerHTML = " La pingouine est morte";
+            dialogue.innerHTML = " La pingouine est morte" +"<br/>"+dialogue.innerHTML
         }
     } 
 }
@@ -327,7 +327,7 @@ orque.onclick= function Orque(){                                // Interaction a
         }
         if (stats_orque.PV <=0){
             orque.style.display = 'none';
-            dialogue.innerHTML = " L'orque est morte";
+            dialogue.innerHTML =" L'orque' est morte" +"<br/>"+dialogue.innerHTML
         }
     }
 }

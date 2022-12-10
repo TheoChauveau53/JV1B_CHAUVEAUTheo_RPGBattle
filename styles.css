@@ -42,7 +42,8 @@ button:hover{
     font-size: 3vh;
     width: 33vw ;
     height: auto;
-    background-color: darkgrey;   
+    background-color: darkgrey;
+    overflow-y: scroll;
 }
 #characters{
     display: flex;
