@@ -145,11 +145,10 @@ function Degats(stats_att,stats_cible){
 }
 // Fonction infligeant les degats d'une attaque spéciale, retire le mana et gere le tour 
 function Degats_speciaux(stats_att,stats_cible){
-    stats_cible.PV = stats_cible - stats_att.ATKSPE;
-    stats_att.PM = stats_att.PM - 50                    // Cout en mana 
-    dialogue.innerHTML =stats_att.NOM +" a infligé " + stats_att.ATKSPE + " dégats à " + stats_cible.NOM + "<br/>"+dialogue.innerHTML;
-    nombre_PV.innerHTML = stats_cible.PV + "PV";
-    prc_PV.value = stats_cible.PV;
+    stats_cible.PV = stats_cible.PV - stats_att.ATKSPE;
+    dialogue.innerHTML =stats_att.NOM + " a infligé " + stats_att.ATKSPE + " dégats à " + stats_cible.NOM + "<br/>"+dialogue.innerHTML;
+    nombre_PV.innerHTML = stats_cible.PV + "PV";    //actualisation de l'affichage des PV
+    prc_PV.value = stats_cible.PV;                  //actualisation de l'affichage des PV
     tour = tour+1;
     if(tour==8){
         tour=1
@@ -234,8 +233,49 @@ pingouin.onclick= function Pingouin(){                      // Interaction avec 
             dialogue.innerHTML = " Le pingouin est mort" +"<br/>"+dialogue.innerHTML
         }
     }
-    if(special==true){                                      // Dégats d'attque spéciale
-
+    else if(special==true){                                      // Dégats d'attaque spéciale
+        if(tour==1){
+            if(stats_perenoel.PV>0){
+                Degats_speciaux(stats_perenoel,stats_pingouin);
+            }
+            else{
+                tour=tour+1
+                Pingouin()
+            }
+        }
+        else if(tour==2){
+            if(stats_merenoel.PV>0){
+                Degats_speciaux(stats_merenoel,stats_pingouin);
+            }  
+            else{
+                tour = tour+1
+                Pingouin()
+            }
+        }
+        else if(tour==3){
+            if(stats_lutin.PV>0){
+                Degats_speciaux(stats_lutin,stats_pingouin);
+            }
+            else{
+                tour= tour+1
+                Pingouin()
+            }
+        }
+        else if(tour==4){
+            if(stats_cerf.PV>0){
+                Degats_speciaux(stats_cerf,stats_pingouin);
+                Riposte();
+            }
+            else{
+                tour= tour+1
+                Pingouin();
+                Riposte();
+            }
+        }
+        if (stats_pingouin.PV <=0){
+            pingouin.style.display = "none";
+            dialogue.innerHTML = " Le pingouin est mort" +"<br/>"+dialogue.innerHTML
+        }
     }
 }
 
@@ -284,6 +324,50 @@ pingouine.onclick= function Pingouine(){                    // Interaction avec 
             dialogue.innerHTML = " La pingouine est morte" +"<br/>"+dialogue.innerHTML
         }
     } 
+    else if(special==true){
+        if(tour==1){
+            if(stats_perenoel.PV>0){
+                Degats_speciaux(stats_perenoel,stats_pingouine);
+            }
+            else{
+                tour=tour+1
+                Pingouine();
+            }
+        }
+        else if(tour==2){
+            if(stats_merenoel.PV>0){
+                Degats_speciaux(stats_merenoel,stats_pingouine);
+            }  
+            else{
+                tour = tour+1;
+                Pingouine();
+            }
+        }
+        else if(tour==3){
+            if(stats_lutin.PV>0){
+                Degats_speciaux(stats_lutin,stats_pingouine);
+            }
+            else{
+                tour= tour+1;
+                Pingouine();
+            }
+        }
+        else if(tour==4){
+            if(stats_cerf.PV>0){
+                Degats_speciaux(stats_cerf,stats_pingouine);
+                Riposte();
+            }
+            else{
+                tour= tour+1
+                Pingouine();
+                Riposte();
+            }
+        }
+        if (stats_pingouine.PV <=0){
+            pingouine.style.display = 'none';
+            dialogue.innerHTML = " La pingouine est morte" +"<br/>"+dialogue.innerHTML
+        }
+    }
 }
 orque.onclick= function Orque(){                                // Interaction avec orque
     if(attaque==true){
@@ -317,6 +401,50 @@ orque.onclick= function Orque(){                                // Interaction a
         else if(tour==4){
             if(stats_cerf.PV>0){
                 Degats(stats_cerf,stats_orque);
+                Riposte();
+            }
+            else{
+                tour= tour+1;
+                Orque();
+                Riposte();
+            }
+        }
+        if (stats_orque.PV <=0){
+            orque.style.display = 'none';
+            dialogue.innerHTML =" L'orque' est morte" +"<br/>"+dialogue.innerHTML
+        }
+    }
+    else if(special==true){
+        if(tour==1){
+            if(stats_perenoel.PV>0){
+                Degats_speciaux(stats_perenoel,stats_orque);
+            }
+            else{
+                tour=tour+1;
+                Orque();
+            }
+        }
+        else if(tour==2){
+            if(stats_merenoel.PV>0){
+                Degats_speciaux(stats_merenoel,stats_orque);
+            }  
+            else{
+                tour = tour+1;
+                Orque();
+            }
+        }
+        else if(tour==3){
+            if(stats_lutin.PV>0){
+                Degats_speciaux(stats_lutin,stats_orque);
+            }
+            else{
+                tour= tour+1;
+                Orque();
+            }
+        }
+        else if(tour==4){
+            if(stats_cerf.PV>0){
+                Degats_speciaux(stats_cerf,stats_orque);
                 Riposte();
             }
             else{
